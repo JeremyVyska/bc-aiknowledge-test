@@ -30,7 +30,7 @@ This project creates a controlled experiment comparing GitHub Copilot's performa
 - **Validation**: Tests if generic knowledge provides any benefit
 
 #### **🟠 Tier 2: Community BC Knowledge**  
-- **Knowledge**: General Business Central documentation, community forums, basic AL patterns
+- **Knowledge**: General Business Central knowledge from the models, plus AL Guidelines Vibe Coding Standards
 - **Expected**: Some BC awareness, limited SIFT/FlowField understanding
 - **Validation**: Tests community knowledge effectiveness
 
@@ -302,11 +302,12 @@ For each tier (T1-T4):
 ## 📊 **ROI & Strategic Context**
 
 ### **Investment Comparison**
-- **This Test**: 1-2 weeks total time investment
-- **Full Pipeline**: 8-12 weeks processing 370+ source files
+- **This Test**: <1 week total time investment
+- **Full Pipeline**: Several weeks processing a huge amount of best practices into atomic knowledge
 - **Cost Savings**: 6-10 weeks saved if atomic knowledge proves ineffective
 - **Risk Mitigation**: Concrete evidence before major time commitment
-
+- **MCP vs Files**: Validate if MCP offers significant advantages over static files for GitHub Copilot consumption
+- 
 ### **Success Metrics for Business Decision**
 - **Performance Impact**: Can Tier 3 achieve 5-50x improvements?
 - **Knowledge Effectiveness**: Do atomic topics demonstrably help Copilot?
