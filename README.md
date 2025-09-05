@@ -6,7 +6,7 @@
 
 ## 🎯 **The Business Problem**
 
-GitHub Copilot shows promise for Business Central AL development, but its effectiveness with domain-specific optimizations is unclear. Before investing months processing 370+ source files into "atomic knowledge" for AI enhancement, we need concrete evidence that this approach works.
+GitHub Copilot shows promise for Business Central AL development, but its effectiveness with domain-specific optimizations is unclear. Before investing significant time producing many "atomic knowledge" topics for AI enhancement, we need concrete evidence that this approach works.
 
 **Key Questions:**
 - Does specialized BC knowledge actually improve Copilot's AL optimization suggestions?
@@ -15,7 +15,7 @@ GitHub Copilot shows promise for Business Central AL development, but its effect
 
 ## 🧪 **The Scientific Approach**
 
-This project creates a controlled experiment comparing GitHub Copilot's performance across **five distinct knowledge levels** using identical Business Central code optimization challenges.
+This project creates a controlled experiment comparing GitHub Copilot's performance across **five distinct knowledge levels** using identical Business Central code optimization challenges, this tightly focused on **performance optimization** as it is the most measurable and impactful area, and can be measured in two different ways (Performance Toolkit metrics and optimization decision quality).
 
 ### **Five-Tier Testing Framework**
 
