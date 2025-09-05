@@ -1,24 +1,57 @@
 codeunit 50020 "Test Data Generator"
 {
     procedure GenerateAllTestData(): Boolean
+    var
+        Window: Dialog;
     begin
-        GenerateRentalUnits();
-        GenerateMonthlyLedgerEntries();
-        GeneratePerformanceStats();
+        Window.Open('Test Data Generation Progress\' +
+                    'Phase: #1###################\' +
+                    'Progress: #2###############\' +
+                    'Status: #3##################');
+        
+        Window.Update(1, 'Generating Rental Units');
+        Window.Update(2, '');
+        Window.Update(3, 'Starting...');
+        GenerateRentalUnits(Window);
+        
+        Window.Update(1, 'Generating Monthly Ledger Entries');
+        Window.Update(2, '');
+        Window.Update(3, 'Processing 3.6M+ records...');
+        GenerateMonthlyLedgerEntries(Window);
+        
+        Window.Update(1, 'Generating Performance Stats');
+        Window.Update(2, '');
+        Window.Update(3, 'Finalizing...');
+        GeneratePerformanceStats(Window);
+        
+        Window.Update(1, 'Complete!');
+        Window.Update(2, '100%');
+        Window.Update(3, '5K units + 3.6M ledger entries created');
+        Sleep(2000); // Show completion for 2 seconds
+        Window.Close();
+        
         exit(true);
     end;
     
-    procedure GenerateRentalUnits()
+    procedure GenerateRentalUnits(var Window: Dialog)
     var
         RentalUnit: Record "Rental Unit";
         BuildingCode: Code[20];
         UnitCount: Integer;
         BuildingCount: Integer;
+        ProgressPct: Decimal;
     begin
         RentalUnit.DeleteAll();
         
         for BuildingCount := 1 to 50 do begin
             BuildingCode := 'BLDG-' + Format(BuildingCount);
+            
+            // Update progress every 5 buildings
+            if BuildingCount mod 5 = 0 then begin
+                ProgressPct := BuildingCount / 50 * 100;
+                Window.Update(2, Format(ProgressPct, 0, '<Integer,3>') + '%');
+                Window.Update(3, 'Building ' + Format(BuildingCount) + ' of 50');
+            end;
             
             for UnitCount := 1 to 100 do begin
                 RentalUnit.Init();
@@ -42,21 +75,43 @@ codeunit 50020 "Test Data Generator"
         end;
     end;
     
-    procedure GenerateMonthlyLedgerEntries()
+    procedure GenerateMonthlyLedgerEntries(var Window: Dialog)
     var
         RentalUnit: Record "Rental Unit";
         RentalLedger: Record "Monthly Rental Ledger";
         InvoiceDate: Date;
         EntryNo: Integer;
+        UnitCounter: Integer;
+        TotalUnits: Integer;
+        ProgressPct: Decimal;
+        LastUpdateTime: DateTime;
     begin
         RentalLedger.DeleteAll();
         EntryNo := 1;
+        UnitCounter := 0;
+        
+        RentalUnit.CalcSums();
+        if RentalUnit.FindSet() then
+            TotalUnits := RentalUnit.Count();
+        
+        LastUpdateTime := CurrentDateTime;
         
         if RentalUnit.FindSet() then
             repeat
+                UnitCounter += 1;
                 InvoiceDate := 20190101D; // Start from January 2019
                 
-                while InvoiceDate <= 20231201D do begin // Through December 2023
+                // Update progress every minute or every 100 units, whichever comes first
+                if (UnitCounter mod 100 = 0) or (CurrentDateTime - LastUpdateTime >= 60000) then begin
+                    ProgressPct := UnitCounter / TotalUnits * 100;
+                    Window.Update(2, Format(ProgressPct, 0, '<Integer,3>') + '%');
+                    Window.Update(3, 'Unit ' + Format(UnitCounter) + ' of ' + Format(TotalUnits) + ' (' + Format(EntryNo) + ' entries)');
+                    LastUpdateTime := CurrentDateTime;
+                end;
+                
+                while InvoiceDate <= 20241201D do begin // Through December 2024 (6 years total)
+                    // Generate multiple entries per month to reach 3M+ scale
+                    // Main invoice entry
                     RentalLedger.Init();
                     RentalLedger."Entry No." := EntryNo;
                     RentalLedger."Unit No." := RentalUnit."Unit No.";
@@ -87,20 +142,40 @@ codeunit 50020 "Test Data Generator"
                     
                     RentalLedger.Insert();
                     EntryNo += 1;
+
+                    // Generate 9 additional transaction variants per month to reach 3M+ scale
+                    // (Adjustments, partial payments, maintenance events, etc.)
+                    GenerateAdditionalMonthlyTransactions(RentalUnit, InvoiceDate, EntryNo);
+                    
                     InvoiceDate := CalcDate('<+1M>', InvoiceDate);
                 end;
             until RentalUnit.Next() = 0;
     end;
     
-    procedure GeneratePerformanceStats()
+    procedure GeneratePerformanceStats(var Window: Dialog)
     var
         RentalUnit: Record "Rental Unit";
         PerformanceStats: Record "Rental Unit Performance Stats";
+        UnitCounter: Integer;
+        TotalUnits: Integer;
+        ProgressPct: Decimal;
     begin
         PerformanceStats.DeleteAll();
         
         if RentalUnit.FindSet() then
+            TotalUnits := RentalUnit.Count();
+        
+        UnitCounter := 0;
+        if RentalUnit.FindSet() then
             repeat
+                UnitCounter += 1;
+                
+                if UnitCounter mod 500 = 0 then begin
+                    ProgressPct := UnitCounter / TotalUnits * 100;
+                    Window.Update(2, Format(ProgressPct, 0, '<Integer,3>') + '%');
+                    Window.Update(3, 'Performance stats: ' + Format(UnitCounter) + ' of ' + Format(TotalUnits));
+                end;
+                
                 PerformanceStats.Init();
                 PerformanceStats."Unit No." := RentalUnit."Unit No.";
                 PerformanceStats.Insert();
@@ -323,5 +398,76 @@ codeunit 50020 "Test Data Generator"
         end;
         
         exit(Round(BaseUsage * SeasonalMultiplier, 1));
+    end;
+
+    local procedure GenerateAdditionalMonthlyTransactions(RentalUnit: Record "Rental Unit"; InvoiceDate: Date; var EntryNo: Integer)
+    var
+        RentalLedger: Record "Monthly Rental Ledger";
+        TransactionCount: Integer;
+        TransactionType: Integer;
+    begin
+        // Generate 9 additional transactions per unit per month for realistic volume
+        for TransactionCount := 1 to 9 do begin
+            RentalLedger.Init();
+            RentalLedger."Entry No." := EntryNo;
+            RentalLedger."Unit No." := RentalUnit."Unit No.";
+            RentalLedger."Building Code" := RentalUnit."Building Code";
+            RentalLedger."Unit Type" := RentalUnit."Unit Type";
+            RentalLedger."Property Manager" := RentalUnit."Property Manager";
+            RentalLedger."Tenant No." := RentalUnit."Tenant No.";
+            RentalLedger."Invoice Month" := InvoiceDate;
+            RentalLedger."Square Feet" := RentalUnit."Square Feet";
+            
+            // Vary posting date within the month
+            RentalLedger."Posting Date" := CalcDate('<+' + Format(Random(28)) + 'D>', InvoiceDate);
+            
+            // Generate different transaction types
+            TransactionType := Random(9) + 1;
+            case TransactionType of
+                1: begin // Utility adjustment
+                    RentalLedger."Utility Charges" := Random(500) - 250; // Adjustment amount
+                    RentalLedger."Total Amount" := RentalLedger."Utility Charges";
+                end;
+                2: begin // Maintenance event
+                    RentalLedger."Maintenance Fees" := Random(800) + 100;
+                    RentalLedger."Maintenance Hours" := Random(12) + 1;
+                    RentalLedger."Total Amount" := RentalLedger."Maintenance Fees";
+                end;
+                3: begin // Partial payment
+                    RentalLedger."Base Rent Amount" := -(Random(2000) + 500);
+                    RentalLedger."Payment Status" := RentalLedger."Payment Status"::PartialPaid;
+                    RentalLedger."Total Amount" := RentalLedger."Base Rent Amount";
+                end;
+                4: begin // Energy usage reading
+                    RentalLedger."Energy Usage KWH" := GenerateEnergyUsage(RentalUnit."Square Feet", InvoiceDate) / 30 * Random(5);
+                    RentalLedger."Total Amount" := 0;
+                end;
+                5: begin // Water usage reading  
+                    RentalLedger."Water Usage Gallons" := GenerateWaterUsage(RentalUnit."Unit Type", InvoiceDate) / 30 * Random(5);
+                    RentalLedger."Total Amount" := 0;
+                end;
+                6: begin // Late fee assessment
+                    RentalLedger."Late Fees" := Random(200) + 50;
+                    RentalLedger."Payment Status" := RentalLedger."Payment Status"::Overdue;
+                    RentalLedger."Total Amount" := RentalLedger."Late Fees";
+                end;
+                7: begin // Parking violation
+                    RentalLedger."Parking Fees" := Random(100) + 25;
+                    RentalLedger."Total Amount" := RentalLedger."Parking Fees";
+                end;
+                8: begin // Credit adjustment
+                    RentalLedger."Total Amount" := -(Random(300) + 50);
+                    RentalLedger."Payment Status" := RentalLedger."Payment Status"::Paid;
+                end;
+                9: begin // Miscellaneous charge
+                    RentalLedger."Total Amount" := Random(150) + 25;
+                    RentalLedger."Payment Status" := RentalLedger."Payment Status"::Pending;
+                end;
+            end;
+            
+            RentalLedger."Invoice Generated" := (TransactionType in [1,2,6,7,9]);
+            RentalLedger.Insert();
+            EntryNo += 1;
+        end;
     end;
 }

@@ -24,20 +24,26 @@ Run data generation **once** using any tier (data structure is identical):
 
 ```al
 // Execute in AL Console or via test codeunit
-Codeunit.Run(Codeunit::"Test Data Generator"); // 50001
+Codeunit.Run(Codeunit::"Test Data Generator"); // 50020
 ```
+
+**Progress Monitoring**: The generator displays a progress dialog with:
+- **Current Phase**: Units → Ledger Entries → Performance Stats
+- **Percentage Complete**: Real-time progress tracking
+- **Status Updates**: Current counts and processing information
+- **Updates**: Every minute during ledger generation, every 5 buildings/100 units elsewhere
 
 **Expected Results**:
 - 5,000 Rental Units (50 buildings × 100 units each)
-- 3,000,000+ Monthly Rental Ledger entries (5 years × 12 months × 5,000 units)
+- 3,600,000 Monthly Rental Ledger entries (6 years × 12 months × 10 entries per unit per month)
 - Performance Stats records initialized
-- Data generation time: ~10-30 minutes depending on server performance
+- Data generation time: ~15-45 minutes depending on server performance
 
 ### **Step 3: Verify Data Population**
 Confirm data creation success:
 - **Rental Unit count**: Should be exactly 5,000 records
-- **Monthly Rental Ledger count**: Should be 3,000,000+ records
-- **Date range**: January 2019 through December 2023
+- **Monthly Rental Ledger count**: Should be 3,600,000 records
+- **Date range**: January 2019 through December 2024
 - **Revenue variation**: Check for seasonal patterns and realistic amounts
 
 ---
