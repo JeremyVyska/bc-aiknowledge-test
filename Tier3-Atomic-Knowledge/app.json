@@ -1,0 +1,45 @@
+﻿{
+  "id": "10000003-0003-0003-0003-000000000003",
+  "name": "Tier3 Atomic Knowledge",
+  "publisher": "KnowledgeTester",
+  "version": "1.0.0.0",
+  "brief": "Testing with focused atomic BC performance topics",
+  "description": "This extension tests GitHub Copilot optimization suggestions using focused atomic Business Central performance topics (45-60 topics) for specific SIFT, FlowField, and SetLoadFields recommendations.",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [
+    {
+      "id": "00000000-0000-0000-0000-000000000000",
+      "name": "Common Data Infrastructure",
+      "publisher": "KnowledgeTester",
+      "version": "1.0.0.0"
+    },
+    {
+      "id": "75f1590f-55c5-4501-ae63-bada5534e852",
+      "name": "Performance Toolkit",
+      "publisher": "Microsoft",
+      "version": "25.0.0.0"
+    },
+    {
+      "id": "23de40a6-dfe8-4f80-80db-d70f83ce8caf",
+      "name": "Test Runner",
+      "publisher": "Microsoft",
+      "version": "25.0.0.0"
+    }
+  ],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "25.0.0.0",
+  "idRanges": [
+    {
+      "from": 50400,
+      "to": 50499
+    }
+  ],
+  "features": [],
+  "runtime": "14.0",
+  "target": "OnPrem"
+}

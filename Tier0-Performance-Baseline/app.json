@@ -1,0 +1,45 @@
+﻿{
+  "id": "10000000-0000-0000-0000-000000000000",
+  "name": "Tier0 Performance Baseline",
+  "publisher": "KnowledgeTester",
+  "version": "1.0.0.0",
+  "brief": "Performance baseline measurement of unoptimized inefficient code",
+  "description": "This extension measures actual performance of inefficient AL code patterns without optimization. Provides baseline measurements for comparing against Copilot-optimized versions.",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [
+    {
+      "id": "00000000-0000-0000-0000-000000000000",
+      "name": "Common Data Infrastructure",
+      "publisher": "KnowledgeTester",
+      "version": "1.0.0.0"
+    },
+    {
+      "id": "75f1590f-55c5-4501-ae63-bada5534e852",
+      "name": "Performance Toolkit",
+      "publisher": "Microsoft",
+      "version": "25.0.0.0"
+    },
+    {
+      "id": "23de40a6-dfe8-4f80-80db-d70f83ce8caf",
+      "name": "Test Runner",
+      "publisher": "Microsoft",
+      "version": "25.0.0.0"
+    }
+  ],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "25.0.0.0",
+  "idRanges": [
+    {
+      "from": 50100,
+      "to": 50199
+    }
+  ],
+  "features": [],
+  "runtime": "14.0",
+  "target": "OnPrem"
+}

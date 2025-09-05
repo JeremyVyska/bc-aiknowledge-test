@@ -1,0 +1,45 @@
+﻿{
+  "id": "10000004-0004-0004-0004-000000000004",
+  "name": "Tier4 MCP Enhanced",
+  "publisher": "KnowledgeTester",
+  "version": "1.0.0.0",
+  "brief": "Testing with MCP-enhanced intelligent BC knowledge",
+  "description": "This extension tests GitHub Copilot optimization suggestions enhanced with Model Context Protocol providing intelligent BC knowledge access, real-time analysis, and progressive optimization guidance.",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [
+    {
+      "id": "00000000-0000-0000-0000-000000000000",
+      "name": "Common Data Infrastructure",
+      "publisher": "KnowledgeTester",
+      "version": "1.0.0.0"
+    },
+    {
+      "id": "75f1590f-55c5-4501-ae63-bada5534e852",
+      "name": "Performance Toolkit",
+      "publisher": "Microsoft",
+      "version": "25.0.0.0"
+    },
+    {
+      "id": "23de40a6-dfe8-4f80-80db-d70f83ce8caf",
+      "name": "Test Runner",
+      "publisher": "Microsoft",
+      "version": "25.0.0.0"
+    }
+  ],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "25.0.0.0",
+  "idRanges": [
+    {
+      "from": 50500,
+      "to": 50599
+    }
+  ],
+  "features": [],
+  "runtime": "14.0",
+  "target": "OnPrem"
+}

@@ -1,0 +1,39 @@
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "name": "Common Data Infrastructure",
+  "publisher": "KnowledgeTester",
+  "version": "1.0.0.0",
+  "brief": "Shared data infrastructure for Five-Tier Copilot Testing Protocol",
+  "description": "This extension provides the shared data tables, test data generator, and infrastructure objects used by all tier testing extensions. Contains the single source of truth for rental management test data including 5,000 units and 3,000,000+ ledger entries.",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [
+    {
+      "id": "75f1590f-55c5-4501-ae63-bada5534e852",
+      "name": "Performance Toolkit",
+      "publisher": "Microsoft",
+      "version": "25.0.0.0"
+    },
+    {
+      "id": "23de40a6-dfe8-4f80-80db-d70f83ce8caf",
+      "name": "Test Runner",
+      "publisher": "Microsoft",
+      "version": "25.0.0.0"
+    }
+  ],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "25.0.0.0",
+  "idRanges": [
+    {
+      "from": 50000,
+      "to": 50099
+    }
+  ],
+  "features": [],
+  "runtime": "14.0",
+  "target": "OnPrem"
+}
