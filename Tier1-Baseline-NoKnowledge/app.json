@@ -1,5 +1,5 @@
 ﻿{
-  "id": "10000001-0001-0001-0001-000000000001",
+  "id": "dde25141-b261-4a19-95be-65057776845c",
   "name": "Tier1 Generic Knowledge",
   "publisher": "KnowledgeTester",
   "version": "1.0.0.0",
@@ -12,7 +12,7 @@
   "logo": "",
   "dependencies": [
     {
-      "id": "00000000-0000-0000-0000-000000000000",
+      "id": "50b6d810-6a27-4b81-9324-13c26754122c",
       "name": "Common Data Infrastructure",
       "publisher": "KnowledgeTester",
       "version": "1.0.0.0"

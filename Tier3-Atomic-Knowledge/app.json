@@ -1,5 +1,5 @@
 ﻿{
-  "id": "10000003-0003-0003-0003-000000000003",
+  "id": "3b133a05-3458-4014-a5cb-fc78ed426a98",
   "name": "Tier3 Atomic Knowledge",
   "publisher": "KnowledgeTester",
   "version": "1.0.0.0",
@@ -12,7 +12,7 @@
   "logo": "",
   "dependencies": [
     {
-      "id": "00000000-0000-0000-0000-000000000000",
+      "id": "50b6d810-6a27-4b81-9324-13c26754122c",
       "name": "Common Data Infrastructure",
       "publisher": "KnowledgeTester",
       "version": "1.0.0.0"
