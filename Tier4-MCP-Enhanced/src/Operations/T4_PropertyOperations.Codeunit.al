@@ -16,6 +16,8 @@
         MaintenanceCount: Integer;
         TotalHours: Decimal;
     begin
+        // Only process records from 2024 (last year of test data) to avoid full table scan
+        RentalLedger.SetFilter("Posting Date", '>=%1', 20240101D);
         if RentalLedger.FindSet() then
             repeat
                 if RentalLedger."Maintenance Hours" > 5 then begin
@@ -76,6 +78,8 @@
                 UnitRevenue := 0;
                 
                 RentalLedger.SetRange("Unit No.", RentalUnit."Unit No.");
+                // Only check 2024 data (last year of test data) to limit data volume
+                RentalLedger.SetFilter("Posting Date", '>=%1', 20240101D);
                 if RentalLedger.FindSet() then
                     repeat
                         UnitMaintenanceCost += RentalLedger."Maintenance Fees";

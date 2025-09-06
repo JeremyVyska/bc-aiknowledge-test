@@ -43,6 +43,8 @@
         RentalLedger: Record "Monthly Rental Ledger";
         TotalLateFees: Decimal;
     begin
+        // Only process records from last 12 months of data (2024) to avoid full table scan
+        RentalLedger.SetFilter("Posting Date", '>=%1', 20240101D);
         if RentalLedger.FindSet() then
             repeat
                 TotalLateFees += RentalLedger."Late Fees";

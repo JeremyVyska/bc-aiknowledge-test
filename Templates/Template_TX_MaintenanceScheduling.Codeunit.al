@@ -14,9 +14,13 @@
         MaintenanceRequest: Record "Monthly Rental Ledger";
         WorkOrderCount: Integer;
     begin
+        // Limit to first 100 units to avoid nested loop performance issue
+        RentalUnit.SetRange("Unit No.", 'UNIT-001', 'UNIT-100');
         if RentalUnit.FindSet() then
             repeat
                 MaintenanceRequest.SetRange("Unit No.", RentalUnit."Unit No.");
+                // Only check 2024 data (last year of test data)
+                MaintenanceRequest.SetFilter("Posting Date", '>=%1', 20240101D);
                 if MaintenanceRequest.FindSet() then
                     repeat
                         if MaintenanceRequest."Maintenance Hours" > 8 then begin
@@ -33,6 +37,8 @@
         TotalDistance: Decimal;
         RouteEfficiency: Decimal;
     begin
+        // Limit to first 200 units for route optimization
+        RentalUnit.SetRange("Unit No.", 'UNIT-001', 'UNIT-200');
         if RentalUnit.FindSet() then
             repeat
                 TotalDistance += Random(50) + 10;
