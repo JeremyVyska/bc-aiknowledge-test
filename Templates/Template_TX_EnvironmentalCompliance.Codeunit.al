@@ -2,6 +2,12 @@ codeunit {{BASE_ID}}15 "{{TIER_PREFIX}} Environmental Compliance"
 {
     // Environmental monitoring and sustainability reporting
     
+    trigger OnRun()
+    begin
+        MonitorEnergyEfficiency();
+        GenerateSustainabilityReport();
+    end;
+    
     procedure MonitorEnergyEfficiency(): Decimal
     var
         RentalLedger: Record "Monthly Rental Ledger";

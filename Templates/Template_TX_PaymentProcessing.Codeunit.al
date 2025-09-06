@@ -2,6 +2,14 @@ codeunit {{BASE_ID}}12 "{{TIER_PREFIX}} Payment Processing"
 {
     // Rent collection and payment management
     
+    trigger OnRun()
+    begin
+        ProcessMonthlyPayments();
+        IdentifyDelinquentAccounts();
+        CalculateLateFees();
+        GetPaymentSummaryOptimized();
+    end;
+    
     procedure ProcessMonthlyPayments(): Decimal
     var
         RentalLedger: Record "Monthly Rental Ledger";

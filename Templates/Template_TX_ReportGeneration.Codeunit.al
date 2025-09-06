@@ -2,6 +2,14 @@ codeunit {{BASE_ID}}19 "{{TIER_PREFIX}} Report Generation"
 {
     // Document creation and business reporting services
 
+    trigger OnRun()
+    begin
+        CreateStandardReport();
+        GetOptimizedPaymentSummary();
+        ProcessComplexRevenueSummary();
+        ExportPropertyDetails();
+    end;
+
     procedure CreateStandardReport(): Text
     var
         RentalUnit: Record "Rental Unit";

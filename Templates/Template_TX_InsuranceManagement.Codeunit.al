@@ -2,6 +2,12 @@ codeunit {{BASE_ID}}14 "{{TIER_PREFIX}} Insurance Management"
 {
     // Property insurance and risk assessment
     
+    trigger OnRun()
+    begin
+        ProcessInsuranceClaims();
+        CalculateRiskAssessment();
+    end;
+    
     procedure ProcessInsuranceClaims(): Integer
     var
         RentalLedger: Record "Monthly Rental Ledger";

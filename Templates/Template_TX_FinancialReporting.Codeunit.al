@@ -2,6 +2,14 @@ codeunit {{BASE_ID}}05 "{{TIER_PREFIX}} Financial Reporting"
 {
     // Financial analysis and tax reporting functionality
 
+    trigger OnRun()
+    begin
+        GenerateFinancialSummary();
+        CalculateYearlyRevenueTrend();
+        CalculateTaxLiability(2023);
+        ExportFinancialData(20230101D, 20231231D);
+    end;
+
     procedure GenerateFinancialSummary(): Decimal
     var
         RentalLedger: Record "Monthly Rental Ledger";

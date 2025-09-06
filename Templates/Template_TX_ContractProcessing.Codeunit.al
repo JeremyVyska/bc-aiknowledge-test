@@ -2,6 +2,12 @@ codeunit {{BASE_ID}}11 "{{TIER_PREFIX}} Contract Processing"
 {
     // Lease contract processing and document management
     
+    trigger OnRun()
+    begin
+        ValidateContractTerms();
+        GenerateRenewalNotices();
+    end;
+    
     procedure ValidateContractTerms(): Boolean
     var
         RentalUnit: Record "Rental Unit";

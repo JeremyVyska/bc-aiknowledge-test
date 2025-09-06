@@ -2,6 +2,12 @@ codeunit {{BASE_ID}}13 "{{TIER_PREFIX}} Marketing Campaigns"
 {
     // Property marketing and lead generation
     
+    trigger OnRun()
+    begin
+        AnalyzeVacancyRates();
+        GenerateMarketingReports();
+    end;
+    
     procedure AnalyzeVacancyRates(): Decimal
     var
         RentalUnit: Record "Rental Unit";

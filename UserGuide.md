@@ -11,11 +11,11 @@
 
 ### **Step 1: Deploy Extensions**
 Deploy all 5 tier extensions in the following order:
-1. `Tier0-Performance-Baseline` (ID: 50000-50099)
-2. `Tier1-Baseline-NoKnowledge` (ID: 50100-50199)
-3. `Tier2-Community-Knowledge` (ID: 50200-50299)
-4. `Tier3-Atomic-Knowledge` (ID: 50300-50399)
-5. `Tier4-MCP-Enhanced` (ID: 50400-50499)
+1. `Tier0-Performance-Baseline` (ID: 50100-50199)
+2. `Tier1-Baseline-NoKnowledge` (ID: 50200-50299)
+3. `Tier2-Community-Knowledge` (ID: 50300-50399)
+4. `Tier3-Atomic-Knowledge` (ID: 50400-50499)
+5. `Tier4-MCP-Enhanced` (ID: 50500-50599)
 
 ### **Step 2: Generate Test Data**
 Run data generation **once** using any tier (data structure is identical):
@@ -52,71 +52,109 @@ Confirm data creation success:
 
 ### **Performance Toolkit Jobs Setup**
 
-Create separate Performance Toolkit job suites for each tier with the following codeunits:
+Create separate Performance Toolkit job suites for each tier. Each tier contains **22 business codeunits** across 9 functional modules, but focus Performance Toolkit testing on the **primary optimization targets** that contain the most significant inefficiencies:
+
+**Complete Codeunit Structure per Tier** (22 codeunits each):
+- **Analytics Module**: Rental Analytics (XX01), Market Analysis (XX03), Business Intelligence (XX20), Data Aggregation (XX18)
+- **Finance Module**: Financial Reporting (XX07), Payment Processing (XX12)  
+- **Leasing Module**: Lease Management (XX02), Contract Processing (XX04)
+- **Operations Module**: Property Operations (XX08), Maintenance Scheduling (XX09), Utility Management (XX21)
+- **Services Module**: Tenant Services (XX15), Marketing Campaigns (XX13), Report Generation (XX19)
+- **Security Module**: Security Management (XX16), Emergency Response (XX17)
+- **Compliance Module**: Inspection Services (XX05), Environmental Compliance (XX06), Insurance Management (XX10), Audit Compliance (XX22)
+- **Quality Module**: System Validation (XX11)
+- **Vendor Module**: Vendor Management (XX14)
+
+**Focus Performance Testing on Key Optimization Targets:**
 
 #### **Tier 0: Baseline Performance (50100-50199)**
 ```
 Job Suite: "Tier 0 - Performance Baseline"
-- Job 1: Codeunit 501001 "T0 Rental Analytics" → GeneratePortfolioSummary()
-- Job 2: Codeunit 501001 "T0 Rental Analytics" → CalculateUnitRevenue('BLDG-1-001')  
-- Job 3: Codeunit 501001 "T0 Rental Analytics" → ExportMonthlyLedgerData()
-- Job 4: Codeunit 501001 "T0 Rental Analytics" → GenerateQuarterlyReport(20230101D, 20230331D)
-- Job 5: Codeunit 501001 "T0 Rental Analytics" → AnalyzeBuildingPerformance()
-- Job 6: Codeunit 501001 "T0 Rental Analytics" → GeneratePropertyKPIs('BLDG-1')
-- Job 7: Codeunit 501018 "T0 Data Aggregation" → GetMonthlyRevenueTotals()
-- Job 8: Codeunit 501018 "T0 Data Aggregation" → GenerateQuarterlyTrendAnalysis()
+
+// Primary Optimization Targets (High Performance Impact)
+- Job 1: Codeunit 50101 "T0 Rental Analytics" (OnRun executes all analytics procedures)
+- Job 2: Codeunit 50118 "T0 Data Aggregation" (OnRun executes all aggregation procedures)
+- Job 3: Codeunit 50102 "T0 Lease Management" (OnRun executes all lease procedures)
+- Job 4: Codeunit 50108 "T0 Property Operations" (OnRun executes all operation procedures)
+
+// Secondary Targets (Medium Performance Impact)  
+- Job 5: Codeunit 50112 "T0 Payment Processing" (OnRun executes all payment procedures)
+- Job 6: Codeunit 50107 "T0 Financial Reporting" (OnRun executes all financial procedures)
+- Job 7: Codeunit 50119 "T0 Report Generation" (OnRun executes all reporting procedures)
+- Job 8: Codeunit 50103 "T0 Market Analysis" (OnRun executes all market procedures)
+- Job 9: Codeunit 50120 "T0 Business Intelligence" (OnRun executes all BI procedures)
 ```
 
 #### **Tier 1: Generic Knowledge (50200-50299)**
 ```
 Job Suite: "Tier 1 - Generic Knowledge"  
-- Job 1: Codeunit 502001 "T1 Rental Analytics" → GeneratePortfolioSummary()
-- Job 2: Codeunit 502001 "T1 Rental Analytics" → CalculateUnitRevenue('BLDG-1-001')
-- Job 3: Codeunit 502001 "T1 Rental Analytics" → ExportMonthlyLedgerData()
-- Job 4: Codeunit 502001 "T1 Rental Analytics" → GenerateQuarterlyReport(20230101D, 20230331D)
-- Job 5: Codeunit 502001 "T1 Rental Analytics" → AnalyzeBuildingPerformance()
-- Job 6: Codeunit 502001 "T1 Rental Analytics" → GeneratePropertyKPIs('BLDG-1')
-- Job 7: Codeunit 502018 "T1 Data Aggregation" → GetMonthlyRevenueTotals()
-- Job 8: Codeunit 502018 "T1 Data Aggregation" → GenerateQuarterlyTrendAnalysis()
+
+// Primary Optimization Targets (High Performance Impact)
+- Job 1: Codeunit 50201 "T1 Rental Analytics" (OnRun executes all analytics procedures)
+- Job 2: Codeunit 50218 "T1 Data Aggregation" (OnRun executes all aggregation procedures)
+- Job 3: Codeunit 50202 "T1 Lease Management" (OnRun executes all lease procedures)
+- Job 4: Codeunit 50208 "T1 Property Operations" (OnRun executes all operation procedures)
+
+// Secondary Targets (Medium Performance Impact)  
+- Job 5: Codeunit 50212 "T1 Payment Processing" (OnRun executes all payment procedures)
+- Job 6: Codeunit 50207 "T1 Financial Reporting" (OnRun executes all financial procedures)
+- Job 7: Codeunit 50219 "T1 Report Generation" (OnRun executes all reporting procedures)
+- Job 8: Codeunit 50203 "T1 Market Analysis" (OnRun executes all market procedures)
+- Job 9: Codeunit 50220 "T1 Business Intelligence" (OnRun executes all BI procedures)
 ```
 
 #### **Tier 2: Community Knowledge (50300-50399)**
 ```
 Job Suite: "Tier 2 - Community Knowledge"
-- Job 1: Codeunit 503001 "T2 Rental Analytics" → GeneratePortfolioSummary()
-- Job 2: Codeunit 503001 "T2 Rental Analytics" → CalculateUnitRevenue('BLDG-1-001')
-- Job 3: Codeunit 503001 "T2 Rental Analytics" → ExportMonthlyLedgerData()
-- Job 4: Codeunit 503001 "T2 Rental Analytics" → GenerateQuarterlyReport(20230101D, 20230331D)
-- Job 5: Codeunit 503001 "T2 Rental Analytics" → AnalyzeBuildingPerformance()
-- Job 6: Codeunit 503001 "T2 Rental Analytics" → GeneratePropertyKPIs('BLDG-1')
-- Job 7: Codeunit 503018 "T2 Data Aggregation" → GetMonthlyRevenueTotals()
-- Job 8: Codeunit 503018 "T2 Data Aggregation" → GenerateQuarterlyTrendAnalysis()
+
+// Primary Optimization Targets (High Performance Impact)
+- Job 1: Codeunit 50301 "T2 Rental Analytics" (OnRun executes all analytics procedures)
+- Job 2: Codeunit 50318 "T2 Data Aggregation" (OnRun executes all aggregation procedures)
+- Job 3: Codeunit 50302 "T2 Lease Management" (OnRun executes all lease procedures)
+- Job 4: Codeunit 50308 "T2 Property Operations" (OnRun executes all operation procedures)
+
+// Secondary Targets (Medium Performance Impact)  
+- Job 5: Codeunit 50312 "T2 Payment Processing" (OnRun executes all payment procedures)
+- Job 6: Codeunit 50307 "T2 Financial Reporting" (OnRun executes all financial procedures)
+- Job 7: Codeunit 50319 "T2 Report Generation" (OnRun executes all reporting procedures)
+- Job 8: Codeunit 50303 "T2 Market Analysis" (OnRun executes all market procedures)
+- Job 9: Codeunit 50320 "T2 Business Intelligence" (OnRun executes all BI procedures)
 ```
 
 #### **Tier 3: Atomic Knowledge (50400-50499)**
 ```
 Job Suite: "Tier 3 - Atomic Knowledge"
-- Job 1: Codeunit 504001 "T3 Rental Analytics" → GeneratePortfolioSummary()
-- Job 2: Codeunit 504001 "T3 Rental Analytics" → CalculateUnitRevenue('BLDG-1-001')
-- Job 3: Codeunit 504001 "T3 Rental Analytics" → ExportMonthlyLedgerData()
-- Job 4: Codeunit 504001 "T3 Rental Analytics" → GenerateQuarterlyReport(20230101D, 20230331D)
-- Job 5: Codeunit 504001 "T3 Rental Analytics" → AnalyzeBuildingPerformance()
-- Job 6: Codeunit 504001 "T3 Rental Analytics" → GeneratePropertyKPIs('BLDG-1')
-- Job 7: Codeunit 504018 "T3 Data Aggregation" → GetMonthlyRevenueTotals()
-- Job 8: Codeunit 504018 "T3 Data Aggregation" → GenerateQuarterlyTrendAnalysis()
+
+// Primary Optimization Targets (High Performance Impact)
+- Job 1: Codeunit 50401 "T3 Rental Analytics" (OnRun executes all analytics procedures)
+- Job 2: Codeunit 50418 "T3 Data Aggregation" (OnRun executes all aggregation procedures)
+- Job 3: Codeunit 50402 "T3 Lease Management" (OnRun executes all lease procedures)
+- Job 4: Codeunit 50408 "T3 Property Operations" (OnRun executes all operation procedures)
+
+// Secondary Targets (Medium Performance Impact)  
+- Job 5: Codeunit 50412 "T3 Payment Processing" (OnRun executes all payment procedures)
+- Job 6: Codeunit 50407 "T3 Financial Reporting" (OnRun executes all financial procedures)
+- Job 7: Codeunit 50419 "T3 Report Generation" (OnRun executes all reporting procedures)
+- Job 8: Codeunit 50403 "T3 Market Analysis" (OnRun executes all market procedures)
+- Job 9: Codeunit 50420 "T3 Business Intelligence" (OnRun executes all BI procedures)
 ```
 
 #### **Tier 4: MCP-Enhanced (50500-50599)**
 ```
 Job Suite: "Tier 4 - MCP Enhanced"
-- Job 1: Codeunit 505001 "T4 Rental Analytics" → GeneratePortfolioSummary()
-- Job 2: Codeunit 505001 "T4 Rental Analytics" → CalculateUnitRevenue('BLDG-1-001')
-- Job 3: Codeunit 505001 "T4 Rental Analytics" → ExportMonthlyLedgerData()
-- Job 4: Codeunit 505001 "T4 Rental Analytics" → GenerateQuarterlyReport(20230101D, 20230331D)
-- Job 5: Codeunit 505001 "T4 Rental Analytics" → AnalyzeBuildingPerformance()
-- Job 6: Codeunit 505001 "T4 Rental Analytics" → GeneratePropertyKPIs('BLDG-1')
-- Job 7: Codeunit 505018 "T4 Data Aggregation" → GetMonthlyRevenueTotals()
-- Job 8: Codeunit 505018 "T4 Data Aggregation" → GenerateQuarterlyTrendAnalysis()
+
+// Primary Optimization Targets (High Performance Impact)
+- Job 1: Codeunit 50501 "T4 Rental Analytics" (OnRun executes all analytics procedures)
+- Job 2: Codeunit 50518 "T4 Data Aggregation" (OnRun executes all aggregation procedures)
+- Job 3: Codeunit 50502 "T4 Lease Management" (OnRun executes all lease procedures)
+- Job 4: Codeunit 50508 "T4 Property Operations" (OnRun executes all operation procedures)
+
+// Secondary Targets (Medium Performance Impact)  
+- Job 5: Codeunit 50512 "T4 Payment Processing" (OnRun executes all payment procedures)
+- Job 6: Codeunit 50507 "T4 Financial Reporting" (OnRun executes all financial procedures)
+- Job 7: Codeunit 50519 "T4 Report Generation" (OnRun executes all reporting procedures)
+- Job 8: Codeunit 50503 "T4 Market Analysis" (OnRun executes all market procedures)
+- Job 9: Codeunit 50520 "T4 Business Intelligence" (OnRun executes all BI procedures)
 ```
 
 ### **Performance Toolkit Settings**
@@ -166,16 +204,24 @@ Job Suite: "Tier 4 - MCP Enhanced"
 ### **Expected Performance Improvements**
 
 #### **Baseline Expectations (Tier 0)**
-- **Job 1 (Portfolio Summary)**: 30-120 seconds (5,000 individual FlowField calculations)
-- **Job 2 (Unit Revenue)**: 1-5 seconds (60 monthly records, manual summation)
-- **Job 3 (Ledger Export)**: 300-600 seconds (3M+ records, all fields accessed)
-- **Job 4 (Quarterly Report)**: 15-45 seconds (750K records, date filtering)
-- **Job 5 (Building Analysis)**: 60-180 seconds (nested loops, 50 buildings)
-- **Job 6 (Property KPIs)**: 10-30 seconds (manual aggregation by building)
+**Primary Optimization Targets:**
+- **Job 1 (Rental Analytics - 50101)**: 90-300 seconds (portfolio summary + building analysis + revenue calcs + reporting)
+- **Job 2 (Data Aggregation - 50118)**: 65-150 seconds (monthly totals + trend analysis + validation + performance scoring)
+- **Job 3 (Lease Management - 50102)**: 25-75 seconds (lease renewals + value calculations + document generation)
+- **Job 4 (Property Operations - 50108)**: 35-95 seconds (maintenance scheduling + billing + compliance + efficiency reporting)
+
+**Secondary Targets:**  
+- **Job 5 (Payment Processing - 50112)**: 15-45 seconds (monthly payments + delinquency + fees + summaries)
+- **Job 6 (Financial Reporting - 50107)**: 40-90 seconds (financial summaries + trends + tax + export)
+- **Job 7 (Report Generation - 50119)**: 320-650 seconds (standard + payment + revenue + property reports)
+- **Job 8 (Market Analysis - 50103)**: 20-50 seconds (market trends + competitive rates + reports)
+- **Job 9 (Business Intelligence - 50120)**: 25-65 seconds (occupancy + revenue + building comparisons + maintenance stats)
 
 #### **Optimization Targets**
-- **SetLoadFields**: 50-80% reduction in execution time for Jobs 1, 3
-- **SIFT CalcSum**: 10-100x improvement for Jobs 2, 4, 5, 6
+- **SetLoadFields**: 50-80% reduction for Jobs 1, 2, 9 (large dataset traversal)
+- **SIFT CalcSum**: 10-100x improvement for Jobs 3, 4, 7, 8 (aggregation operations)
+- **FlowField vs CalcSum**: 2-10x improvement for Jobs 5, 6 (targeted calculations)
+- **Date Range Filtering**: 5-20x improvement for Jobs 4, 8 (temporal queries)
 - **FlowField Usage**: Near-instant results for Jobs 1, 5, 6
 - **Key Optimization**: 5-20x improvement for date filtering (Job 4)
 

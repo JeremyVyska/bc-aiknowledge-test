@@ -2,6 +2,12 @@ codeunit {{BASE_ID}}17 "{{TIER_PREFIX}} Emergency Response"
 {
     // Emergency procedures and incident management
     
+    trigger OnRun()
+    begin
+        MonitorEmergencyIncidents();
+        ValidateEmergencyEquipment();
+    end;
+    
     procedure MonitorEmergencyIncidents(): Integer
     var
         RentalUnit: Record "Rental Unit";

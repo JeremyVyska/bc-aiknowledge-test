@@ -2,6 +2,13 @@ codeunit {{BASE_ID}}02 "{{TIER_PREFIX}} Lease Management"
 {
     // Business logic for lease management operations
 
+    trigger OnRun()
+    begin
+        ProcessLeaseRenewals();
+        CalculateLeaseValue('BLDG-1-001');
+        GenerateLeaseDocuments();
+    end;
+
     procedure ProcessLeaseRenewals(): Integer
     var
         RentalUnit: Record "Rental Unit";

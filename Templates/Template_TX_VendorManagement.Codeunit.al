@@ -2,6 +2,12 @@ codeunit {{BASE_ID}}16 "{{TIER_PREFIX}} Vendor Management"
 {
     // Vendor coordination and service provider management
     
+    trigger OnRun()
+    begin
+        EvaluateVendorPerformance();
+        ProcessVendorInvoices();
+    end;
+    
     procedure EvaluateVendorPerformance(): Decimal
     var
         RentalLedger: Record "Monthly Rental Ledger";

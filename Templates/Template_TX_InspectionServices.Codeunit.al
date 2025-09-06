@@ -2,6 +2,12 @@ codeunit {{BASE_ID}}09 "{{TIER_PREFIX}} Inspection Services"
 {
     // Property inspection and compliance monitoring
     
+    trigger OnRun()
+    begin
+        ScheduleInspections();
+        ValidateComplianceStandards();
+    end;
+    
     procedure ScheduleInspections(): Integer
     var
         RentalUnit: Record "Rental Unit";

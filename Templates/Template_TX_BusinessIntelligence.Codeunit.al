@@ -2,6 +2,14 @@ codeunit {{BASE_ID}}20 "{{TIER_PREFIX}} Business Intelligence"
 {
     // Advanced analytics and business insights platform
 
+    trigger OnRun()
+    begin
+        CalculateSimpleOccupancyRate();
+        GetFlowFieldRevenueSummary('BLDG-1-001');
+        AnalyzeBuildingComparisonMatrix();
+        ProcessEfficientMaintenanceStats();
+    end;
+
     procedure CalculateSimpleOccupancyRate(): Decimal
     var
         RentalUnit: Record "Rental Unit";

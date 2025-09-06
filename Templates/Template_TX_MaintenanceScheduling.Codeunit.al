@@ -2,6 +2,12 @@ codeunit {{BASE_ID}}07 "{{TIER_PREFIX}} Maintenance Scheduling"
 {
     // Automated maintenance scheduling and work order management
     
+    trigger OnRun()
+    begin
+        CreateWorkOrders();
+        OptimizeMaintenanceRoutes();
+    end;
+    
     procedure CreateWorkOrders(): Integer
     var
         RentalUnit: Record "Rental Unit";

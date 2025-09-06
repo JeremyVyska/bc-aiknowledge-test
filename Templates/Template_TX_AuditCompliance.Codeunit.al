@@ -2,6 +2,14 @@ codeunit {{BASE_ID}}22 "{{TIER_PREFIX}} Audit Compliance"
 {
     // Regulatory compliance and audit trail management
 
+    trigger OnRun()
+    begin
+        GenerateAuditTrail();
+        CheckComplianceStatus();
+        ProcessRegulatoryReporting();
+        ValidateDataRetentionPolicies();
+    end;
+
     procedure GenerateAuditTrail(): Text
     var
         RentalLedger: Record "Monthly Rental Ledger";
