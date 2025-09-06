@@ -1,4 +1,4 @@
-﻿codeunit 505007 "T4 Maintenance Scheduling"
+﻿codeunit 50507 "T4 Maintenance Scheduling"
 {
     // Automated maintenance scheduling and work order management
     

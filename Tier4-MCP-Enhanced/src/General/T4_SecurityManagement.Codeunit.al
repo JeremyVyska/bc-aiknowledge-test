@@ -1,4 +1,4 @@
-﻿codeunit 505008 "T4 Security Management"
+﻿codeunit 50508 "T4 Security Management"
 {
     // Building security and access control systems
     

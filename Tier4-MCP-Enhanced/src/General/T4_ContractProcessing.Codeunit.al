@@ -1,4 +1,4 @@
-﻿codeunit 505011 "T4 Contract Processing"
+﻿codeunit 50511 "T4 Contract Processing"
 {
     // Lease contract processing and document management
     

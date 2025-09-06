@@ -1,4 +1,4 @@
-﻿codeunit 505006 "T4 Market Analysis"
+﻿codeunit 50506 "T4 Market Analysis"
 {
     // Market research and competitive analysis tools
 

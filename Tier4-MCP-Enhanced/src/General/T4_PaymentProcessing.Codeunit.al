@@ -1,4 +1,4 @@
-﻿codeunit 505012 "T4 Payment Processing"
+﻿codeunit 50512 "T4 Payment Processing"
 {
     // Rent collection and payment management
     

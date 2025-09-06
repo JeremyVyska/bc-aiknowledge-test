@@ -1,4 +1,4 @@
-﻿codeunit 505002 "T4 Lease Management"
+﻿codeunit 50502 "T4 Lease Management"
 {
     // Business logic for lease management operations
 

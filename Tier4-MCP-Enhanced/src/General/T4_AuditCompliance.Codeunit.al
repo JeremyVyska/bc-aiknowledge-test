@@ -1,4 +1,4 @@
-﻿codeunit 505022 "T4 Audit Compliance"
+﻿codeunit 50522 "T4 Audit Compliance"
 {
     // Regulatory compliance and audit trail management
 

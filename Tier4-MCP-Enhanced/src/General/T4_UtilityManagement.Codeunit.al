@@ -1,4 +1,4 @@
-﻿codeunit 505010 "T4 Utility Management"
+﻿codeunit 50510 "T4 Utility Management"
 {
     // Utility tracking and energy efficiency management
     

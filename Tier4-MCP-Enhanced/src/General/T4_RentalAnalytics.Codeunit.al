@@ -1,4 +1,4 @@
-﻿codeunit 505001 "T4 Rental Analytics"
+﻿codeunit 50501 "T4 Rental Analytics"
 {
     // Core analytics and reporting procedures for rental portfolio management
 

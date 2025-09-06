@@ -1,4 +1,4 @@
-﻿codeunit 505003 "T4 Property Operations"
+﻿codeunit 50503 "T4 Property Operations"
 {
     // Core property management and maintenance operations
 

@@ -1,4 +1,4 @@
-﻿codeunit 505018 "T4 Data Aggregation"
+﻿codeunit 50518 "T4 Data Aggregation"
 {
     // Statistical analysis and data summarization services
 

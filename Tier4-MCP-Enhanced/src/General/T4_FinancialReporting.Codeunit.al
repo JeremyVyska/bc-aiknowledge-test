@@ -1,4 +1,4 @@
-﻿codeunit 505005 "T4 Financial Reporting"
+﻿codeunit 50505 "T4 Financial Reporting"
 {
     // Financial analysis and tax reporting functionality
 

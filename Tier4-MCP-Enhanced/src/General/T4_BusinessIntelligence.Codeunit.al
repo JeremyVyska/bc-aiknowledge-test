@@ -1,4 +1,4 @@
-﻿codeunit 505020 "T4 Business Intelligence"
+﻿codeunit 50520 "T4 Business Intelligence"
 {
     // Advanced analytics and business insights platform
 

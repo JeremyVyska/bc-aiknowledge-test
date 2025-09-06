@@ -1,4 +1,4 @@
-﻿codeunit 505015 "T4 Environmental Compliance"
+﻿codeunit 50515 "T4 Environmental Compliance"
 {
     // Environmental monitoring and sustainability reporting
     

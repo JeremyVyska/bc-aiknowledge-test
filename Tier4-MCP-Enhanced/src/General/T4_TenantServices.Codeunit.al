@@ -1,4 +1,4 @@
-﻿codeunit 505004 "T4 Tenant Services"
+﻿codeunit 50504 "T4 Tenant Services"
 {
     // Tenant communication and service request handling
 

@@ -1,4 +1,4 @@
-﻿codeunit 505016 "T4 Vendor Management"
+﻿codeunit 50516 "T4 Vendor Management"
 {
     // Vendor coordination and service provider management
     

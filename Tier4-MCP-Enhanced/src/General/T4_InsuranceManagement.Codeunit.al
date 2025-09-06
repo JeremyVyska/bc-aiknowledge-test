@@ -1,4 +1,4 @@
-﻿codeunit 505014 "T4 Insurance Management"
+﻿codeunit 50514 "T4 Insurance Management"
 {
     // Property insurance and risk assessment
     
