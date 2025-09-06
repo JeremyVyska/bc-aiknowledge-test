@@ -1,0 +1,10 @@
+Codeunit ID	Codeunit Name	Parameters	No. of Sessions	Run in Foreground	Description	Status	Min. User Delay (ms)	Max. User Delay (ms)	Delay between iterations (sec.)	Delay Type	No. of Iterations	Total Duration (ms)	Average Duration (ms)	No. of SQL Statements	Avg. No. of SQL Statements	No. of Iterations Base	Total Duration Base (ms)	Average Duration Base (ms)	No. of SQL Statements Base	Avg. No. of SQL Statements Base	Change in No. of SQL Statements (%)	Change in Duration (%)
+50401	T3 Rental Analytics		1	No		Completed	100	1000	5	Fixed	4	609001	152250	10017	2504	0	0	0	0	0	0.00	0.00
+50418	T3 Data Aggregation		1	No		Completed	100	1000	5	Fixed	16	545518	34094	25	1	0	0	0	0	0	0.00	0.00
+50402	T3 Lease Management		1	No		Completed	100	1000	5	Fixed	101	75524	747	205	2	0	0	0	0	0	0.00	0.00
+50408	T3 Security Management		1	No		Completed	100	1000	5	Fixed	8	597434	74679	16	2	0	0	0	0	0	0.00	0.00
+50412	T3 Payment Processing		1	No		Completed	100	1000	5	Fixed	15	562522	37501	45	3	0	0	0	0	0	0.00	0.00
+50407	T3 Maintenance Scheduling		1	No		Completed	100	1000	5	Fixed	110	1304	11	2	0	0	0	0	0	0	0.00	0.00
+50419	T3 Report Generation		1	No		Completed	100	1000	5	Fixed	2	662690	331345	306	153	0	0	0	0	0	0.00	0.00
+50403	T3 Property Operations		1	No		Completed	100	1000	5	Fixed	28	461044	16465	58	2	0	0	0	0	0	0.00	0.00
+50420	T3 Business Intelligence		1	No		Completed	100	1000	5	Fixed	102	49384	484	206	2	0	0	0	0	0	0.00	0.00
