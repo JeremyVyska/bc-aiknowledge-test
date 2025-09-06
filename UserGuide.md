@@ -48,6 +48,59 @@ Confirm data creation success:
 
 ---
 
+## 🔧 **Multi-App Workspace Setup**
+
+### **VSCode Workspace Configuration**
+
+Each tier requires a multi-app workspace that provides complete optimization access:
+
+#### **Workspace Structure**
+```
+TierX-Testing.code-workspace includes:
+├── Common-Data-Infrastructure/    # Tables, SIFT, FlowFields (modifiable)
+└── TierX-Performance-Testing/     # Codeunits (modifiable)
+```
+
+#### **Complete Optimization Scope Available**
+**Table-Level Optimizations:**
+- **SIFT Key Configuration**: Add/modify SIFT keys for efficient aggregation
+- **Table Index Design**: Optimize primary/secondary keys for query patterns
+- **FlowField Strategy**: Add calculated fields, modify CalcFormula expressions
+
+**AL Code Optimizations:**  
+- **SetLoadFields**: Selective field loading for large datasets
+- **CalcSums vs FlowField**: Choose optimal aggregation approach
+- **Date Range Filtering**: Optimize temporal queries and SIFT usage
+
+### **Git-Controlled Testing Procedure**
+
+#### **Per-Tier Testing Workflow**
+```
+1. Open TierX-Testing.code-workspace
+2. GitHub Copilot optimization session (with tier-specific knowledge)
+3. Modify both Common tables AND tier codeunits as needed
+4. Deploy optimized extensions to BC
+5. Run BCPT performance testing
+6. Commit ONLY OptimizationLog.md: git add OptimizationLog.md && git commit -m "TierX optimization analysis"
+7. Revert all code changes: git checkout -- .
+8. Proceed to next tier with clean baseline
+```
+
+#### **Benefits of This Approach**
+- **Complete BC Optimization**: Tests real-world architectural optimization capability
+- **Data Consistency**: Same baseline data/structure across all tiers
+- **Evidence Preservation**: OptimizationLog.md captures decisions without contaminating baseline
+- **Reproducible Results**: Each tier starts from identical foundation
+
+#### **Critical Methodology Note**
+**All tier copilot-instructions.md files explicitly include both code AND table optimization scope:**
+- Sections 6-7 guide agents to review Common-Data-Infrastructure tables
+- SIFT key configuration and FlowField optimization opportunities included
+- Prevents unintentional bias toward code-only optimizations
+- Ensures fair comparison of knowledge effectiveness across complete BC optimization spectrum
+
+---
+
 ## 📊 **Performance Toolkit Configuration**
 
 ### **Performance Toolkit Jobs Setup**

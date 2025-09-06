@@ -37,6 +37,19 @@ When reviewing AL code for optimization opportunities, focus on:
 - Review nested loop patterns
 - Look for more efficient relationship traversal
 
+### 6. Table Structure Optimization
+- Review table key definitions and SIFT configuration in Common-Data-Infrastructure
+- Analyze FlowField definitions and CalcFormula efficiency
+- Consider index optimization opportunities for query patterns
+- Look for missing SIFT keys that could support aggregation operations
+- Evaluate whether new FlowFields would be more efficient than manual calculations
+
+### 7. Multi-App Architecture Review
+- Analyze both tier-specific codeunits AND Common-Data-Infrastructure tables
+- Consider table-level changes that would support codeunit optimizations
+- Review FlowField containers (RentalUnitPerformanceStats) for optimization opportunities
+- Look for opportunities to add calculated fields that eliminate manual processing
+
 ## Performance Measurement Context
 This code will be tested using the **Microsoft Performance Toolkit** for Business Central. Your optimizations should focus on measurable improvements in:
 - **Execution Time**: Faster completion of business operations

@@ -17,6 +17,13 @@ GitHub Copilot shows promise for Business Central AL development, but its effect
 
 This project creates a controlled experiment comparing GitHub Copilot's performance across **five distinct knowledge levels** using identical Business Central code optimization challenges, this tightly focused on **performance optimization** as it is the most measurable and impactful area, and can be measured in two different ways (Performance Toolkit metrics and optimization decision quality).
 
+**Key Innovation: Complete BC Optimization Scope**
+Unlike traditional code-only testing, this framework provides agents with **full architectural access** through multi-app VSCode workspaces that include both table structures (Common-Data-Infrastructure) and business logic (tier-specific codeunits). This enables testing of the complete spectrum of Business Central optimizations:
+- AL code patterns (SetLoadFields, CalcSums)
+- SIFT key optimization and configuration  
+- Table index design and modifications
+- FlowField strategy and implementation
+
 ### **Five-Tier Testing Framework**
 
 #### **🔴 Tier 0: Performance Baseline**
@@ -224,11 +231,16 @@ KnowledgeTester/
 ├── ANALYSIS_CONTEXT.md                          # Context for future result analysis
 ├── GenerateTiers.ps1                            # Automated tier generation
 ├── AnalyzeOptimizationLogs.ps1                  # Log analysis automation
+├── Tier0-Testing.code-workspace                 # VSCode workspace: Common + Tier 0
+├── Tier1-Testing.code-workspace                 # VSCode workspace: Common + Tier 1
+├── Tier2-Testing.code-workspace                 # VSCode workspace: Common + Tier 2
+├── Tier3-Testing.code-workspace                 # VSCode workspace: Common + Tier 3
+├── Tier4-Testing.code-workspace                 # VSCode workspace: Common + Tier 4
 ├── Common-Data-Infrastructure/                  # Shared data model & test generator
 │   ├── app.json                                 # BC 25 with Performance Toolkit deps
-│   ├── RentalUnit.al                            # Master data (5K records)
-│   ├── MonthlyRentalLedger.al                   # Transaction data (3M+ records)  
-│   ├── RentalUnitPerformanceStats.al            # FlowField container
+│   ├── RentalUnit.al                            # Master data (5K records) - SIFT optimizable
+│   ├── MonthlyRentalLedger.al                   # Transaction data (3M+ records) - Index optimizable
+│   ├── RentalUnitPerformanceStats.al            # FlowField container - Strategy optimizable
 │   ├── TestDataGenerator.al                     # Realistic data population
 │   └── [enums and supporting objects]
 ├── Tier0-Performance-Baseline/                  # Unoptimized baseline
@@ -257,17 +269,19 @@ KnowledgeTester/
 ## 🚀 **Execution Workflow**
 
 ### **Phase 1: Setup (30 minutes)**
-1. **Deploy Common Extension**: Shared data infrastructure
+1. **Deploy Common Extension**: Shared data infrastructure with tables, SIFT, and FlowFields
 2. **Deploy All Tier Extensions**: 5 identical codebases with different IDs
 3. **Generate Test Data**: `Codeunit.Run(50020)` - creates 5K units + 3M+ ledger entries
+4. **Create VSCode Workspaces**: Multi-app workspaces for each tier (TierX-Testing.code-workspace)
 
 ### **Phase 2: Tier Testing (1-2 hours per tier)**
 For each tier (T1-T4):
-1. **Use GitHub Copilot** with tier-specific `.copilot` knowledge context
-2. **Analyze & Optimize** the 22 business objects systematically  
-3. **Auto-logging**: All decisions recorded in `OptimizationLog.md`
-4. **Performance Testing**: Run Performance Toolkit job suites
-5. **Compile & Validate**: Ensure all optimizations work correctly
+1. **Open Multi-App Workspace**: Load both Common-Data-Infrastructure + Tier extensions
+2. **Use GitHub Copilot** with tier-specific `.copilot` knowledge context
+3. **Complete Optimization Access**: Analyze & optimize tables, SIFT keys, FlowFields, and codeunits  
+4. **Auto-logging**: All decisions recorded in `OptimizationLog.md`
+5. **Deploy & Test**: Publish optimized extensions and run BCPT performance suites
+6. **Git-Controlled Reset**: Commit only OptimizationLog.md, revert all code changes for next tier
 
 ### **Phase 3: Analysis (2-4 hours)**
 1. **Automated Log Analysis**: `AnalyzeOptimizationLogs.ps1 -GenerateReport`
