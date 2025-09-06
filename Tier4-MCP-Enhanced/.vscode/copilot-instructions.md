@@ -3,11 +3,20 @@
 ## Primary Task
 You are assisting with **Business Central AL code performance optimization**. Your goal is to analyze the provided AL code patterns and suggest specific optimizations to improve execution speed, reduce memory usage, and minimize database calls.
 
-## Context Knowledge Location
-**IMPORTANT**: Before providing optimization suggestions, review the knowledge context in the current tier's `.copilot` folder:
-- Read `.copilot/README.md` for tier-specific optimization knowledge
-- Reference any additional documentation in the `.copilot/` folder
-- Apply only the knowledge available in this tier's context
+## Context Knowledge Location - MCP Enhanced
+**IMPORTANT**: This tier uses the **Business Central Knowledge Base (BCKB) MCP server** for accessing optimization knowledge instead of local files. 
+
+### Available MCP Tools
+1. **`find_bc_topics`** - Search BC atomic knowledge topics by tags, domain, difficulty, or code context
+2. **`get_topic_content`** - Retrieve complete content of specific BC knowledge topics  
+3. **`analyze_code_patterns`** - Analyze AL code for performance issues and suggest related topics
+4. **`get_optimization_workflow`** - Generate step-by-step optimization workflows for BC scenarios
+
+### Knowledge Access Process
+- **Before optimization**: Use `analyze_code_patterns` on the provided AL code to identify issues
+- **For research**: Use `find_bc_topics` to search for relevant optimization techniques (e.g., tags: ["sift", "performance"])
+- **For details**: Use `get_topic_content` to get comprehensive information on specific topics
+- **For workflows**: Use `get_optimization_workflow` to get structured optimization steps
 
 ## Code Analysis Focus Areas
 When reviewing AL code for optimization opportunities, focus on:
@@ -59,10 +68,12 @@ This code will be tested using the **Microsoft Performance Toolkit** for Busines
 
 ## Optimization Approach
 1. **Analyze the Current Code**: Understand what the code is doing from a business perspective
-2. **Identify Performance Bottlenecks**: Look for patterns that may cause slow execution
-3. **Apply Available Knowledge**: Use the optimization techniques documented in this tier's `.copilot` folder
-4. **Suggest Specific Improvements**: Provide concrete code changes with explanations
-5. **Maintain Functionality**: Ensure optimizations preserve the original business logic
+2. **Use MCP Analysis**: Run `analyze_code_patterns` on the provided AL code to identify specific issues
+3. **Research Solutions**: Use `find_bc_topics` to search for relevant BC optimization knowledge
+4. **Get Detailed Guidance**: Use `get_topic_content` for comprehensive implementation details
+5. **Plan Implementation**: Use `get_optimization_workflow` for step-by-step optimization processes
+6. **Apply Improvements**: Provide concrete code changes with explanations from BCKB knowledge
+7. **Maintain Functionality**: Ensure optimizations preserve the original business logic
 
 ## MANDATORY LOGGING REQUIREMENTS
 
@@ -73,7 +84,7 @@ This code will be tested using the **Microsoft Performance Toolkit** for Busines
 
 ### Session Overview
 - **Tier**: [Current Tier Name]
-- **Knowledge Context**: [.copilot folder contents applied]
+- **Knowledge Context**: [BCKB MCP server topics accessed]
 - **Files Analyzed**: [list of files reviewed]
 - **Optimization Opportunities Found**: [count]
 - **Changes Applied**: [count]
@@ -85,7 +96,7 @@ This code will be tested using the **Microsoft Performance Toolkit** for Busines
 **Status**: [OPTIMIZED/NO_CHANGE_NEEDED/KNOWLEDGE_GAP]
 - **Pattern Identified**: [specific inefficient pattern or optimal pattern confirmed]
 - **Technical Analysis**: [detailed explanation of why this needs/doesn't need optimization]
-- **Knowledge Applied**: [specific BC/AL knowledge used from .copilot context]
+- **Knowledge Applied**: [specific BC/AL knowledge used from BCKB MCP server topics]
 - **Action Taken**: [specific change made or why no change was made]
 - **Expected Performance Impact**: [quantified improvement estimate]
 - **Confidence Level**: [High/Medium/Low based on available knowledge]
@@ -116,7 +127,7 @@ When suggesting optimizations:
 
 ## Important Notes
 - **ALWAYS start by creating/updating OptimizationLog.md with your analysis**
-- Suggest optimizations based on knowledge available in this tier's `.copilot` folder
+- Suggest optimizations based on knowledge retrieved from the BCKB MCP server
 - Focus on Business Central-specific patterns when supported by available context
 - Provide working AL code that compiles and maintains original functionality
 - Consider the scale of data mentioned in the business scenarios (5,000 units, 3M+ records)

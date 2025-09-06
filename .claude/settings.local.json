@@ -9,7 +9,9 @@
       "Bash(for:*)",
       "Bash(do cp .vscode/copilot-instructions.md \"$tier/.vscode/copilot-instructions.md\")",
       "Bash(done)",
-      "Bash(do echo \"  $tier:\")"
+      "Bash(do echo \"  $tier:\")",
+      "Bash(npm run build:*)",
+      "Bash(npm install:*)"
     ],
     "deny": [],
     "ask": []
