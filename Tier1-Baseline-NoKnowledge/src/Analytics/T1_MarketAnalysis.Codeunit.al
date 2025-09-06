@@ -5,7 +5,7 @@
     trigger OnRun()
     begin
         AnalyzeMarketTrends();
-        CompareCompetitiveRates("Rental Unit Type"::Apartment);
+        CompareCompetitiveRates("Rental Unit Type"::Office);
         GenerateMarketReport();
     end;
 

@@ -5,7 +5,7 @@ codeunit {{BASE_ID}}06 "{{TIER_PREFIX}} Market Analysis"
     trigger OnRun()
     begin
         AnalyzeMarketTrends();
-        CompareCompetitiveRates("Rental Unit Type"::Apartment);
+        CompareCompetitiveRates("Rental Unit Type"::Office);
         GenerateMarketReport();
     end;
 
