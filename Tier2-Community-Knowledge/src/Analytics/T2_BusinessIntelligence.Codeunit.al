@@ -2,6 +2,14 @@
 {
     // Advanced analytics and business insights platform
 
+    trigger OnRun()
+    begin
+        CalculateSimpleOccupancyRate();
+        GetFlowFieldRevenueSummary('BLDG-1-001');
+        AnalyzeBuildingComparisonMatrix();
+        ProcessEfficientMaintenanceStats();
+    end;
+
     procedure CalculateSimpleOccupancyRate(): Decimal
     var
         RentalUnit: Record "Rental Unit";

@@ -2,6 +2,12 @@
 {
     // Environmental monitoring and sustainability reporting
     
+    trigger OnRun()
+    begin
+        MonitorEnergyEfficiency();
+        GenerateSustainabilityReport();
+    end;
+    
     procedure MonitorEnergyEfficiency(): Decimal
     var
         RentalLedger: Record "Monthly Rental Ledger";

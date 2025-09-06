@@ -2,6 +2,16 @@
 {
     // Core analytics and reporting procedures for rental portfolio management
 
+    trigger OnRun()
+    begin
+        GeneratePortfolioSummary();
+        CalculateUnitRevenue('BLDG-1-001');
+        ExportMonthlyLedgerData();
+        GenerateQuarterlyReport(20230101D, 20230331D);
+        AnalyzeBuildingPerformance();
+        GeneratePropertyKPIs('BLDG-1');
+    end;
+
     procedure GeneratePortfolioSummary(): Decimal
     var
         RentalUnit: Record "Rental Unit";

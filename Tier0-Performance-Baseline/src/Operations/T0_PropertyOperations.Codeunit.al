@@ -2,6 +2,14 @@
 {
     // Core property management and maintenance operations
 
+    trigger OnRun()
+    begin
+        ScheduleMaintenanceWork();
+        ProcessUtilityBilling('BLDG-1-001');
+        ValidatePropertyCompliance();
+        GenerateBuildingEfficiencyReport('BLDG-1-001');
+    end;
+
     procedure ScheduleMaintenanceWork(): Integer
     var
         RentalLedger: Record "Monthly Rental Ledger";

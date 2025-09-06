@@ -2,6 +2,14 @@
 {
     // Data validation and system health monitoring
 
+    trigger OnRun()
+    begin
+        ValidateUnitConfiguration();
+        CheckSystemHealthMetrics();
+        PerformBusinessRuleValidation();
+        GenerateConfigurationReport();
+    end;
+
     procedure ValidateUnitConfiguration(): Boolean
     var
         RentalUnit: Record "Rental Unit";

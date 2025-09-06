@@ -2,6 +2,14 @@
 {
     // Statistical analysis and data summarization services
 
+    trigger OnRun()
+    begin
+        GetMonthlyRevenueTotals();
+        CalculateUnitPerformanceScore('BLDG-1-001');
+        GenerateQuarterlyTrendAnalysis();
+        ValidateDataIntegrity();
+    end;
+
     procedure GetMonthlyRevenueTotals(): Decimal
     var
         RentalLedger: Record "Monthly Rental Ledger";

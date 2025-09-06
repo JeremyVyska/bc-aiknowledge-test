@@ -2,6 +2,14 @@
 {
     // Rent collection and payment management
     
+    trigger OnRun()
+    begin
+        ProcessMonthlyPayments();
+        IdentifyDelinquentAccounts();
+        CalculateLateFees();
+        GetPaymentSummaryOptimized();
+    end;
+    
     procedure ProcessMonthlyPayments(): Decimal
     var
         RentalLedger: Record "Monthly Rental Ledger";

@@ -2,6 +2,12 @@
 {
     // Utility tracking and energy efficiency management
     
+    trigger OnRun()
+    begin
+        AnalyzeEnergyConsumption();
+        OptimizeUtilityBilling();
+    end;
+    
     procedure AnalyzeEnergyConsumption(): Decimal
     var
         RentalLedger: Record "Monthly Rental Ledger";

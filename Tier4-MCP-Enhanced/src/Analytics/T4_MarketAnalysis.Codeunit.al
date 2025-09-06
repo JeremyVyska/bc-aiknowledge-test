@@ -2,6 +2,13 @@
 {
     // Market research and competitive analysis tools
 
+    trigger OnRun()
+    begin
+        AnalyzeMarketTrends();
+        CompareCompetitiveRates("Rental Unit Type"::Apartment);
+        GenerateMarketReport();
+    end;
+
     procedure AnalyzeMarketTrends(): Decimal
     var
         RentalLedger: Record "Monthly Rental Ledger";

@@ -2,6 +2,14 @@
 {
     // Tenant communication and service request handling
 
+    trigger OnRun()
+    begin
+        ProcessServiceRequests();
+        CalculateTenantSatisfaction('MGR001');
+        GenerateTenantReports();
+        GetTenantPaymentHistory('T001');
+    end;
+
     procedure ProcessServiceRequests(): Integer
     var
         RentalUnit: Record "Rental Unit";

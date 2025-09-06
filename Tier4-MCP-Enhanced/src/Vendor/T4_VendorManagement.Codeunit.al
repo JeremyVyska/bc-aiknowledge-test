@@ -2,6 +2,12 @@
 {
     // Vendor coordination and service provider management
     
+    trigger OnRun()
+    begin
+        EvaluateVendorPerformance();
+        ProcessVendorInvoices();
+    end;
+    
     procedure EvaluateVendorPerformance(): Decimal
     var
         RentalLedger: Record "Monthly Rental Ledger";

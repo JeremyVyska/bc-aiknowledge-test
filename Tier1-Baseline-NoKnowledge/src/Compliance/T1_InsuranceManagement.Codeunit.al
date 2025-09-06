@@ -2,6 +2,12 @@
 {
     // Property insurance and risk assessment
     
+    trigger OnRun()
+    begin
+        ProcessInsuranceClaims();
+        CalculateRiskAssessment();
+    end;
+    
     procedure ProcessInsuranceClaims(): Integer
     var
         RentalLedger: Record "Monthly Rental Ledger";

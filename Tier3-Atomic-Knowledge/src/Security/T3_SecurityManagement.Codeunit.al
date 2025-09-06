@@ -2,6 +2,12 @@
 {
     // Building security and access control systems
     
+    trigger OnRun()
+    begin
+        ProcessAccessRequests();
+        GenerateSecurityReports();
+    end;
+    
     procedure ProcessAccessRequests(): Boolean
     var
         RentalUnit: Record "Rental Unit";

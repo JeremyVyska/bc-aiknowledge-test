@@ -2,6 +2,12 @@
 {
     // Property inspection and compliance monitoring
     
+    trigger OnRun()
+    begin
+        ScheduleInspections();
+        ValidateComplianceStandards();
+    end;
+    
     procedure ScheduleInspections(): Integer
     var
         RentalUnit: Record "Rental Unit";

@@ -2,6 +2,12 @@
 {
     // Lease contract processing and document management
     
+    trigger OnRun()
+    begin
+        ValidateContractTerms();
+        GenerateRenewalNotices();
+    end;
+    
     procedure ValidateContractTerms(): Boolean
     var
         RentalUnit: Record "Rental Unit";

@@ -2,6 +2,12 @@
 {
     // Emergency procedures and incident management
     
+    trigger OnRun()
+    begin
+        MonitorEmergencyIncidents();
+        ValidateEmergencyEquipment();
+    end;
+    
     procedure MonitorEmergencyIncidents(): Integer
     var
         RentalUnit: Record "Rental Unit";

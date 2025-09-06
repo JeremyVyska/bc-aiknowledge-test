@@ -2,6 +2,14 @@
 {
     // Regulatory compliance and audit trail management
 
+    trigger OnRun()
+    begin
+        GenerateAuditTrail();
+        CheckComplianceStatus();
+        ProcessRegulatoryReporting();
+        ValidateDataRetentionPolicies();
+    end;
+
     procedure GenerateAuditTrail(): Text
     var
         RentalLedger: Record "Monthly Rental Ledger";
