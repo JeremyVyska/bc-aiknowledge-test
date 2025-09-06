@@ -193,7 +193,7 @@ function Generate-Tier {
         
         # Generate output filename and determine module
         $outputFileName = $templateFile.Name.Replace("Template_", "").Replace("TX_", "$($Tier.TierPrefix)_")
-        $objectName = $outputFileName.Replace("$($Tier.TierPrefix)_", "").Replace(".al", "")
+        $objectName = $outputFileName.Replace("$($Tier.TierPrefix)_", "").Replace(".al", "").Replace(".Codeunit", "")
         
         # Get module name, default to "General" if not mapped
         $moduleName = $moduleMap[$objectName]
