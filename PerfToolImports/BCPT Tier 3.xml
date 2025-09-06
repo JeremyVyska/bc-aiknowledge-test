@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-16" standalone="no"?>
+<Root>
+    <BCPTSuite Code="TIER-3" Description="Tier 3 - Atomic Knowledge" Duration="30" DefaultMinDelay="100" DefaultMaxDelay="1000" WorkDateStarts="06/04/25" DayCorrespondsTo="10">
+        <Line CodeunitID="50401" DelayBetwntItr="5" DelayType="Fixed" MinDelay="100" MaxDelay="1000" NoOfSessions="1" RunInForeground="Yes" />
+        <Line CodeunitID="50418" DelayBetwntItr="5" DelayType="Fixed" MinDelay="100" MaxDelay="1000" NoOfSessions="1" RunInForeground="Yes" />
+        <Line CodeunitID="50402" DelayBetwntItr="5" DelayType="Fixed" MinDelay="100" MaxDelay="1000" NoOfSessions="1" RunInForeground="Yes" />
+        <Line CodeunitID="50408" DelayBetwntItr="5" DelayType="Fixed" MinDelay="100" MaxDelay="1000" NoOfSessions="1" RunInForeground="Yes" />
+        <Line CodeunitID="50412" DelayBetwntItr="5" DelayType="Fixed" MinDelay="100" MaxDelay="1000" NoOfSessions="1" RunInForeground="Yes" />
+        <Line CodeunitID="50407" DelayBetwntItr="5" DelayType="Fixed" MinDelay="100" MaxDelay="1000" NoOfSessions="1" RunInForeground="Yes" />
+        <Line CodeunitID="50419" DelayBetwntItr="5" DelayType="Fixed" MinDelay="100" MaxDelay="1000" NoOfSessions="1" RunInForeground="Yes" />
+        <Line CodeunitID="50403" DelayBetwntItr="5" DelayType="Fixed" MinDelay="100" MaxDelay="1000" NoOfSessions="1" RunInForeground="Yes" />
+        <Line CodeunitID="50420" DelayBetwntItr="5" DelayType="Fixed" MinDelay="100" MaxDelay="1000" NoOfSessions="1" RunInForeground="Yes" />
+    </BCPTSuite>
+</Root>

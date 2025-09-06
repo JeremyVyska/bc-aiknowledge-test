@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-16" standalone="no"?>
+<Root>
+    <BCPTSuite Code="TIER-4" Description="Tier 4 - MCP Enhanced" Duration="30" DefaultMinDelay="100" DefaultMaxDelay="1000" WorkDateStarts="06/04/25" DayCorrespondsTo="10">
+        <Line CodeunitID="50501" DelayBetwntItr="5" DelayType="Fixed" MinDelay="100" MaxDelay="1000" NoOfSessions="1" RunInForeground="Yes" />
+        <Line CodeunitID="50518" DelayBetwntItr="5" DelayType="Fixed" MinDelay="100" MaxDelay="1000" NoOfSessions="1" RunInForeground="Yes" />
+        <Line CodeunitID="50502" DelayBetwntItr="5" DelayType="Fixed" MinDelay="100" MaxDelay="1000" NoOfSessions="1" RunInForeground="Yes" />
+        <Line CodeunitID="50508" DelayBetwntItr="5" DelayType="Fixed" MinDelay="100" MaxDelay="1000" NoOfSessions="1" RunInForeground="Yes" />
+        <Line CodeunitID="50512" DelayBetwntItr="5" DelayType="Fixed" MinDelay="100" MaxDelay="1000" NoOfSessions="1" RunInForeground="Yes" />
+        <Line CodeunitID="50507" DelayBetwntItr="5" DelayType="Fixed" MinDelay="100" MaxDelay="1000" NoOfSessions="1" RunInForeground="Yes" />
+        <Line CodeunitID="50519" DelayBetwntItr="5" DelayType="Fixed" MinDelay="100" MaxDelay="1000" NoOfSessions="1" RunInForeground="Yes" />
+        <Line CodeunitID="50503" DelayBetwntItr="5" DelayType="Fixed" MinDelay="100" MaxDelay="1000" NoOfSessions="1" RunInForeground="Yes" />
+        <Line CodeunitID="50520" DelayBetwntItr="5" DelayType="Fixed" MinDelay="100" MaxDelay="1000" NoOfSessions="1" RunInForeground="Yes" />
+    </BCPTSuite>
+</Root>

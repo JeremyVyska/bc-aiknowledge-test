@@ -101,161 +101,45 @@ TierX-Testing.code-workspace includes:
 
 ---
 
-## 📊 **Performance Toolkit Configuration**
+## 📊 **Performance Toolkit Testing**
 
-### **Performance Toolkit Jobs Setup**
+### **Quick Setup: Import Pre-Configured BCPT Suites**
 
-Create separate Performance Toolkit job suites for each tier. Each tier contains **22 business codeunits** across 9 functional modules, but focus Performance Toolkit testing on the **primary optimization targets** that contain the most significant inefficiencies:
+BCPT suite XML files are ready for import in the `/PerfToolImports/` folder:
 
-**Complete Codeunit Structure per Tier** (22 codeunits each):
-- **Analytics Module**: Rental Analytics (XX01), Market Analysis (XX03), Business Intelligence (XX20), Data Aggregation (XX18)
-- **Finance Module**: Financial Reporting (XX07), Payment Processing (XX12)  
-- **Leasing Module**: Lease Management (XX02), Contract Processing (XX04)
-- **Operations Module**: Property Operations (XX08), Maintenance Scheduling (XX09), Utility Management (XX21)
-- **Services Module**: Tenant Services (XX15), Marketing Campaigns (XX13), Report Generation (XX19)
-- **Security Module**: Security Management (XX16), Emergency Response (XX17)
-- **Compliance Module**: Inspection Services (XX05), Environmental Compliance (XX06), Insurance Management (XX10), Audit Compliance (XX22)
-- **Quality Module**: System Validation (XX11)
-- **Vendor Module**: Vendor Management (XX14)
+#### **Import Instructions**
+1. **Navigate to BCPT Suites** page in Business Central  
+2. **Import XML files** for all tiers:
+   - `BCPT Tier 0.xml` - Performance Baseline (Codeunits 50101-50120)
+   - `BCPT Tier 1.xml` - Generic Knowledge (Codeunits 50201-50220)  
+   - `BCPT Tier 2.xml` - Community Knowledge (Codeunits 50301-50320)
+   - `BCPT Tier 3.xml` - Atomic Knowledge (Codeunits 50401-50420)
+   - `BCPT Tier 4.xml` - MCP Enhanced (Codeunits 50501-50520)
 
-**Focus Performance Testing on Key Optimization Targets:**
+#### **Pre-Configured Settings**
+- **Duration**: 30 minutes per tier  
+- **Sessions**: 1 concurrent session (eliminates contention)
+- **Delays**: Fixed 5-second intervals between codeunit executions
+- **Codeunits**: 9 primary optimization targets per tier
+- **Total Runtime**: ~2.5 hours for complete 5-tier comparison
 
-#### **Tier 0: Baseline Performance (50100-50199)**
-```
-Job Suite: "Tier 0 - Performance Baseline"
+### **Execution Instructions**
 
-// Primary Optimization Targets (High Performance Impact)
-- Job 1: Codeunit 50101 "T0 Rental Analytics" (OnRun executes all analytics procedures)
-- Job 2: Codeunit 50118 "T0 Data Aggregation" (OnRun executes all aggregation procedures)
-- Job 3: Codeunit 50102 "T0 Lease Management" (OnRun executes all lease procedures)
-- Job 4: Codeunit 50108 "T0 Property Operations" (OnRun executes all operation procedures)
+#### **Per-Tier Testing Process**
+1. **Import BCPT Suite** for the current tier
+2. **Run Suite** (30-minute duration, automatic execution)
+3. **Export Results** from BCPT Log Entries 
+4. **Wait 10 minutes** between tiers (system recovery)
+5. **Repeat** for next tier
 
-// Secondary Targets (Medium Performance Impact)  
-- Job 5: Codeunit 50112 "T0 Payment Processing" (OnRun executes all payment procedures)
-- Job 6: Codeunit 50107 "T0 Financial Reporting" (OnRun executes all financial procedures)
-- Job 7: Codeunit 50119 "T0 Report Generation" (OnRun executes all reporting procedures)
-- Job 8: Codeunit 50103 "T0 Market Analysis" (OnRun executes all market procedures)
-- Job 9: Codeunit 50120 "T0 Business Intelligence" (OnRun executes all BI procedures)
-```
+#### **Key Metrics to Capture**
+- **Operations Completed**: Total successful executions per codeunit
+- **Average Duration**: Mean execution time per codeunit run
+- **Operations/Minute**: Throughput rate (primary comparison metric)
+- **SQL Statement Count**: Database efficiency measurement
+- **Failure Rate**: Any execution errors encountered
 
-#### **Tier 1: Generic Knowledge (50200-50299)**
-```
-Job Suite: "Tier 1 - Generic Knowledge"  
-
-// Primary Optimization Targets (High Performance Impact)
-- Job 1: Codeunit 50201 "T1 Rental Analytics" (OnRun executes all analytics procedures)
-- Job 2: Codeunit 50218 "T1 Data Aggregation" (OnRun executes all aggregation procedures)
-- Job 3: Codeunit 50202 "T1 Lease Management" (OnRun executes all lease procedures)
-- Job 4: Codeunit 50208 "T1 Property Operations" (OnRun executes all operation procedures)
-
-// Secondary Targets (Medium Performance Impact)  
-- Job 5: Codeunit 50212 "T1 Payment Processing" (OnRun executes all payment procedures)
-- Job 6: Codeunit 50207 "T1 Financial Reporting" (OnRun executes all financial procedures)
-- Job 7: Codeunit 50219 "T1 Report Generation" (OnRun executes all reporting procedures)
-- Job 8: Codeunit 50203 "T1 Market Analysis" (OnRun executes all market procedures)
-- Job 9: Codeunit 50220 "T1 Business Intelligence" (OnRun executes all BI procedures)
-```
-
-#### **Tier 2: Community Knowledge (50300-50399)**
-```
-Job Suite: "Tier 2 - Community Knowledge"
-
-// Primary Optimization Targets (High Performance Impact)
-- Job 1: Codeunit 50301 "T2 Rental Analytics" (OnRun executes all analytics procedures)
-- Job 2: Codeunit 50318 "T2 Data Aggregation" (OnRun executes all aggregation procedures)
-- Job 3: Codeunit 50302 "T2 Lease Management" (OnRun executes all lease procedures)
-- Job 4: Codeunit 50308 "T2 Property Operations" (OnRun executes all operation procedures)
-
-// Secondary Targets (Medium Performance Impact)  
-- Job 5: Codeunit 50312 "T2 Payment Processing" (OnRun executes all payment procedures)
-- Job 6: Codeunit 50307 "T2 Financial Reporting" (OnRun executes all financial procedures)
-- Job 7: Codeunit 50319 "T2 Report Generation" (OnRun executes all reporting procedures)
-- Job 8: Codeunit 50303 "T2 Market Analysis" (OnRun executes all market procedures)
-- Job 9: Codeunit 50320 "T2 Business Intelligence" (OnRun executes all BI procedures)
-```
-
-#### **Tier 3: Atomic Knowledge (50400-50499)**
-```
-Job Suite: "Tier 3 - Atomic Knowledge"
-
-// Primary Optimization Targets (High Performance Impact)
-- Job 1: Codeunit 50401 "T3 Rental Analytics" (OnRun executes all analytics procedures)
-- Job 2: Codeunit 50418 "T3 Data Aggregation" (OnRun executes all aggregation procedures)
-- Job 3: Codeunit 50402 "T3 Lease Management" (OnRun executes all lease procedures)
-- Job 4: Codeunit 50408 "T3 Property Operations" (OnRun executes all operation procedures)
-
-// Secondary Targets (Medium Performance Impact)  
-- Job 5: Codeunit 50412 "T3 Payment Processing" (OnRun executes all payment procedures)
-- Job 6: Codeunit 50407 "T3 Financial Reporting" (OnRun executes all financial procedures)
-- Job 7: Codeunit 50419 "T3 Report Generation" (OnRun executes all reporting procedures)
-- Job 8: Codeunit 50403 "T3 Market Analysis" (OnRun executes all market procedures)
-- Job 9: Codeunit 50420 "T3 Business Intelligence" (OnRun executes all BI procedures)
-```
-
-#### **Tier 4: MCP-Enhanced (50500-50599)**
-```
-Job Suite: "Tier 4 - MCP Enhanced"
-
-// Primary Optimization Targets (High Performance Impact)
-- Job 1: Codeunit 50501 "T4 Rental Analytics" (OnRun executes all analytics procedures)
-- Job 2: Codeunit 50518 "T4 Data Aggregation" (OnRun executes all aggregation procedures)
-- Job 3: Codeunit 50502 "T4 Lease Management" (OnRun executes all lease procedures)
-- Job 4: Codeunit 50508 "T4 Property Operations" (OnRun executes all operation procedures)
-
-// Secondary Targets (Medium Performance Impact)  
-- Job 5: Codeunit 50512 "T4 Payment Processing" (OnRun executes all payment procedures)
-- Job 6: Codeunit 50507 "T4 Financial Reporting" (OnRun executes all financial procedures)
-- Job 7: Codeunit 50519 "T4 Report Generation" (OnRun executes all reporting procedures)
-- Job 8: Codeunit 50503 "T4 Market Analysis" (OnRun executes all market procedures)
-- Job 9: Codeunit 50520 "T4 Business Intelligence" (OnRun executes all BI procedures)
-```
-
-### **BCPT Suite Configuration**
-
-#### **BCPT Header Fields**
-```
-Code: "TIER0-BASELINE"
-Description: "Tier 0 - Performance Baseline Testing"
-Tag: "COPILOT-BASELINE"
-Duration (minutes): 30
-1 Work Day Corresponds to: 480
-```
-
-#### **BCPT Line Fields**
-For each codeunit test, configure these fields:
-```
-Test Codeunit ID: 50101
-Description: "T0 Rental Analytics"
-Parameters: [leave blank]
-No. of Sessions: 1
-Min User Delay (ms): 5000
-Max User Delay (ms): 10000
-```
-
-#### **User Testing Procedures**
-**Pre-Test Setup:**
-1. **System Warm-up**: Run each suite once as a "practice run" to allow JIT compilation
-2. **Data Consistency**: Ensure identical test data across all tiers (run data generator once)
-3. **System Isolation**: Close other BC sessions, disable background jobs during testing
-
-**Test Execution Process:**
-1. **Run Baseline**: Execute Tier 0 suite completely (30 minutes)
-2. **Wait Between Tiers**: Allow 5-10 minutes system recovery between tier tests
-3. **Sequential Testing**: Run Tier 1 → 2 → 3 → 4 in sequence
-4. **Multiple Rounds**: Consider running each tier 2-3 times for consistency validation
-
-#### **Optional BCPT Header Fields**
-```
-Version: [system generated]
-Current Run Type: Background
-Start Time: [set when starting]
-Started by: [current user]
-```
-
-#### **BCPT Suite Execution Settings**
-**Available Run Options:**
-- **Foreground**: Shows real-time progress UI (slower, more resource intensive)
-- **Background**: Runs without UI interference (recommended for accurate measurements)
+**Note**: All tier-specific BCPT suite configurations and detailed codeunit mappings are contained in the pre-configured XML import files in the `/PerfToolImports/` folder. Simply import the appropriate XML file for each tier rather than manually configuring the BCPT suites.
 
 **Built-in Telemetry Capture:**
 - BCPT automatically captures SQL statements, execution duration, and system metrics
