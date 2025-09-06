@@ -22,7 +22,6 @@
                     MaintenanceCount += 1;
                     TotalHours += RentalLedger."Maintenance Hours";
                     // Simulate maintenance scheduling
-                    Sleep(Random(2));
                 end;
             until RentalLedger.Next() = 0;
         exit(MaintenanceCount);
@@ -40,7 +39,6 @@
                 TotalUtilities += RentalLedger."Utility Charges";
                 BillingCount += 1;
                 // Simulate billing processing
-                Sleep(1);
             until RentalLedger.Next() = 0;
         exit(TotalUtilities);
     end;
@@ -57,7 +55,6 @@
                 if RentalUnit."HVAC Zone" = '' then
                     ComplianceIssues += 1;
                 // Simulate compliance checking
-                Sleep(Random(3));
             until RentalUnit.Next() = 0;
         exit(ComplianceIssues = 0);
     end;

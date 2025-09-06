@@ -1,4 +1,4 @@
-codeunit {{BASE_ID}}09 "{{TIER_PREFIX}} Inspection Services"
+﻿codeunit {{BASE_ID}}09 "{{TIER_PREFIX}} Inspection Services"
 {
     // Property inspection and compliance monitoring
     
@@ -19,7 +19,6 @@ codeunit {{BASE_ID}}09 "{{TIER_PREFIX}} Inspection Services"
                 InspectionDate := CalcDate('<+1Y>', RentalUnit."Lease Start Date");
                 if InspectionDate <= Today then begin
                     InspectionCount += 1;
-                    Sleep(Random(3));
                 end;
             until RentalUnit.Next() = 0;
         exit(InspectionCount);

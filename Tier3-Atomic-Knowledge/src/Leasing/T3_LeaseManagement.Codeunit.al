@@ -21,7 +21,6 @@
                 if RentalUnit."Lease End Date" <= CalcDate('<+90D>', CurrentDate) then begin
                     RenewalCount += 1;
                     // Simulate lease renewal processing
-                    Sleep(1);
                 end;
             until RentalUnit.Next() = 0;
         exit(RenewalCount);
@@ -56,7 +55,6 @@
                 if RentalUnit."Lease End Date" <> 0D then begin
                     // Simulate document generation
                     DocumentCount += 1;
-                    Sleep(Random(3));
                 end;
             until RentalUnit.Next() = 0;
         exit(DocumentCount > 0);

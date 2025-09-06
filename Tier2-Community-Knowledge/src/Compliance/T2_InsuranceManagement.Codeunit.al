@@ -17,7 +17,6 @@
             repeat
                 if RentalLedger."Maintenance Hours" > 20 then begin
                     ClaimCount += 1;
-                    Sleep(Random(4));
                 end;
             until RentalLedger.Next() = 0;
         exit(ClaimCount);

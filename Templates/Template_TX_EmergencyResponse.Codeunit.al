@@ -1,4 +1,4 @@
-codeunit {{BASE_ID}}17 "{{TIER_PREFIX}} Emergency Response"
+﻿codeunit {{BASE_ID}}17 "{{TIER_PREFIX}} Emergency Response"
 {
     // Emergency procedures and incident management
     
@@ -17,7 +17,6 @@ codeunit {{BASE_ID}}17 "{{TIER_PREFIX}} Emergency Response"
             repeat
                 if Random(10000) < 3 then begin // 0.03% incident rate
                     IncidentCount += 1;
-                    Sleep(Random(5));
                 end;
             until RentalUnit.Next() = 0;
         exit(IncidentCount);

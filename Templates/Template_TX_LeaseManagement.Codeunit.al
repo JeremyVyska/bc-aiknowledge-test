@@ -1,4 +1,4 @@
-codeunit {{BASE_ID}}02 "{{TIER_PREFIX}} Lease Management"
+﻿codeunit {{BASE_ID}}02 "{{TIER_PREFIX}} Lease Management"
 {
     // Business logic for lease management operations
 
@@ -21,7 +21,6 @@ codeunit {{BASE_ID}}02 "{{TIER_PREFIX}} Lease Management"
                 if RentalUnit."Lease End Date" <= CalcDate('<+90D>', CurrentDate) then begin
                     RenewalCount += 1;
                     // Simulate lease renewal processing
-                    Sleep(1);
                 end;
             until RentalUnit.Next() = 0;
         exit(RenewalCount);
@@ -56,7 +55,6 @@ codeunit {{BASE_ID}}02 "{{TIER_PREFIX}} Lease Management"
                 if RentalUnit."Lease End Date" <> 0D then begin
                     // Simulate document generation
                     DocumentCount += 1;
-                    Sleep(Random(3));
                 end;
             until RentalUnit.Next() = 0;
         exit(DocumentCount > 0);

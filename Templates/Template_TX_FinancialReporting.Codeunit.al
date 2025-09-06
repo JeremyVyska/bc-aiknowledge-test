@@ -1,4 +1,4 @@
-codeunit {{BASE_ID}}05 "{{TIER_PREFIX}} Financial Reporting"
+﻿codeunit {{BASE_ID}}05 "{{TIER_PREFIX}} Financial Reporting"
 {
     // Financial analysis and tax reporting functionality
 
@@ -25,7 +25,6 @@ codeunit {{BASE_ID}}05 "{{TIER_PREFIX}} Financial Reporting"
                 TotalExpenses += RentalLedger."Utility Charges" * 0.3; // Property pays 30% of utilities
                 RecordCount += 1;
                 // Simulate financial processing
-                Sleep(1);
             until RentalLedger.Next() = 0;
             
         NetIncome := TotalRevenue - TotalExpenses;
@@ -108,7 +107,6 @@ codeunit {{BASE_ID}}05 "{{TIER_PREFIX}} Financial Reporting"
                     Format(RentalLedger."Invoice Month");
                 ExportCount += 1;
                 // Simulate export processing
-                Sleep(Random(2));
             until RentalLedger.Next() = 0;
         exit(ExportCount);
     end;

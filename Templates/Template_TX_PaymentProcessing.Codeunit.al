@@ -1,4 +1,4 @@
-codeunit {{BASE_ID}}12 "{{TIER_PREFIX}} Payment Processing"
+﻿codeunit {{BASE_ID}}12 "{{TIER_PREFIX}} Payment Processing"
 {
     // Rent collection and payment management
     
@@ -34,7 +34,6 @@ codeunit {{BASE_ID}}12 "{{TIER_PREFIX}} Payment Processing"
         if RentalLedger.FindSet() then
             repeat
                 DelinquentCount += 1;
-                Sleep(1);
             until RentalLedger.Next() = 0;
         exit(DelinquentCount);
     end;

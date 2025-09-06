@@ -1,4 +1,4 @@
-codeunit {{BASE_ID}}11 "{{TIER_PREFIX}} Contract Processing"
+﻿codeunit {{BASE_ID}}11 "{{TIER_PREFIX}} Contract Processing"
 {
     // Lease contract processing and document management
     
@@ -34,7 +34,6 @@ codeunit {{BASE_ID}}11 "{{TIER_PREFIX}} Contract Processing"
                 RenewalDate := CalcDate('<-90D>', RentalUnit."Lease End Date");
                 if (RenewalDate <= Today) and (RentalUnit."Lease End Date" > Today) then begin
                     NoticeCount += 1;
-                    Sleep(Random(2));
                 end;
             until RentalUnit.Next() = 0;
         exit(NoticeCount);

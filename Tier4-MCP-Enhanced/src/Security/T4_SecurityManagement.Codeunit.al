@@ -17,7 +17,6 @@
             repeat
                 if RentalUnit."Tenant No." <> '' then begin
                     AccessCount += 1;
-                    Sleep(1);
                 end;
             until RentalUnit.Next() = 0;
         exit(AccessCount > 0);

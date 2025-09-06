@@ -25,7 +25,6 @@
                 TotalExpenses += RentalLedger."Utility Charges" * 0.3; // Property pays 30% of utilities
                 RecordCount += 1;
                 // Simulate financial processing
-                Sleep(1);
             until RentalLedger.Next() = 0;
             
         NetIncome := TotalRevenue - TotalExpenses;
@@ -108,7 +107,6 @@
                     Format(RentalLedger."Invoice Month");
                 ExportCount += 1;
                 // Simulate export processing
-                Sleep(Random(2));
             until RentalLedger.Next() = 0;
         exit(ExportCount);
     end;

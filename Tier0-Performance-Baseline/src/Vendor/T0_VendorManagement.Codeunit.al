@@ -42,7 +42,6 @@
             repeat
                 if RentalLedger."Maintenance Fees" > 0 then begin
                     InvoiceCount += 1;
-                    Sleep(1);
                 end;
             until RentalLedger.Next() = 0;
         exit(InvoiceCount);

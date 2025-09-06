@@ -78,7 +78,6 @@
                     Format(RentalLedger."Unit Type");
                 ReportLines += 1;
                 // Simulate market analysis processing
-                Sleep(Random(3));
             until RentalLedger.Next() = 0;
         exit(ReportLines);
     end;

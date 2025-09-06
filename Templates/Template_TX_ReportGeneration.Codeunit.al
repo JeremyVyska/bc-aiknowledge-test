@@ -1,4 +1,4 @@
-codeunit {{BASE_ID}}19 "{{TIER_PREFIX}} Report Generation"
+﻿codeunit {{BASE_ID}}19 "{{TIER_PREFIX}} Report Generation"
 {
     // Document creation and business reporting services
 
@@ -74,7 +74,6 @@ codeunit {{BASE_ID}}19 "{{TIER_PREFIX}} Report Generation"
                     Format(RentalUnit."Monthly Base Rent") + '|' + 
                     RentalUnit."Building Code";
                 ExportCount += 1;
-                Sleep(1);
             until RentalUnit.Next() = 0;
         exit(ExportCount);
     end;

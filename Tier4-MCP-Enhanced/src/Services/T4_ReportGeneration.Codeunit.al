@@ -74,7 +74,6 @@
                     Format(RentalUnit."Monthly Base Rent") + '|' + 
                     RentalUnit."Building Code";
                 ExportCount += 1;
-                Sleep(1);
             until RentalUnit.Next() = 0;
         exit(ExportCount);
     end;

@@ -1,4 +1,4 @@
-codeunit {{BASE_ID}}04 "{{TIER_PREFIX}} Tenant Services"
+﻿codeunit {{BASE_ID}}04 "{{TIER_PREFIX}} Tenant Services"
 {
     // Tenant communication and service request handling
 
@@ -29,7 +29,6 @@ codeunit {{BASE_ID}}04 "{{TIER_PREFIX}} Tenant Services"
                 if UnitMaintenanceHours > 20 then begin
                     ServiceCount += 1;
                     // Simulate service request processing
-                    Sleep(Random(4));
                 end;
             until RentalUnit.Next() = 0;
         exit(ServiceCount);
@@ -76,7 +75,6 @@ codeunit {{BASE_ID}}04 "{{TIER_PREFIX}} Tenant Services"
                     Format(RentalLedger."Maintenance Hours");
                 ReportCount += 1;
                 // Simulate report generation
-                Sleep(Random(2));
             until RentalLedger.Next() = 0;
         exit(ReportCount > 0);
     end;

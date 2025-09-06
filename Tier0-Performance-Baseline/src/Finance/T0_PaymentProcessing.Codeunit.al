@@ -34,7 +34,6 @@
         if RentalLedger.FindSet() then
             repeat
                 DelinquentCount += 1;
-                Sleep(1);
             until RentalLedger.Next() = 0;
         exit(DelinquentCount);
     end;

@@ -21,7 +21,6 @@
                     repeat
                         if MaintenanceRequest."Maintenance Hours" > 8 then begin
                             WorkOrderCount += 1;
-                            Sleep(Random(2));
                         end;
                     until MaintenanceRequest.Next() = 0;
             until RentalUnit.Next() = 0;

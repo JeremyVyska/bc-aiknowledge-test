@@ -29,7 +29,6 @@
                 if UnitMaintenanceHours > 20 then begin
                     ServiceCount += 1;
                     // Simulate service request processing
-                    Sleep(Random(4));
                 end;
             until RentalUnit.Next() = 0;
         exit(ServiceCount);
@@ -76,7 +75,6 @@
                     Format(RentalLedger."Maintenance Hours");
                 ReportCount += 1;
                 // Simulate report generation
-                Sleep(Random(2));
             until RentalLedger.Next() = 0;
         exit(ReportCount > 0);
     end;

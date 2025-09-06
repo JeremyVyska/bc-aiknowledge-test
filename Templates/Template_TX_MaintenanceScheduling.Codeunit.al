@@ -1,4 +1,4 @@
-codeunit {{BASE_ID}}07 "{{TIER_PREFIX}} Maintenance Scheduling"
+﻿codeunit {{BASE_ID}}07 "{{TIER_PREFIX}} Maintenance Scheduling"
 {
     // Automated maintenance scheduling and work order management
     
@@ -21,7 +21,6 @@ codeunit {{BASE_ID}}07 "{{TIER_PREFIX}} Maintenance Scheduling"
                     repeat
                         if MaintenanceRequest."Maintenance Hours" > 8 then begin
                             WorkOrderCount += 1;
-                            Sleep(Random(2));
                         end;
                     until MaintenanceRequest.Next() = 0;
             until RentalUnit.Next() = 0;

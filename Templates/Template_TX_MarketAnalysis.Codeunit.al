@@ -1,4 +1,4 @@
-codeunit {{BASE_ID}}06 "{{TIER_PREFIX}} Market Analysis"
+﻿codeunit {{BASE_ID}}06 "{{TIER_PREFIX}} Market Analysis"
 {
     // Market research and competitive analysis tools
 
@@ -78,7 +78,6 @@ codeunit {{BASE_ID}}06 "{{TIER_PREFIX}} Market Analysis"
                     Format(RentalLedger."Unit Type");
                 ReportLines += 1;
                 // Simulate market analysis processing
-                Sleep(Random(3));
             until RentalLedger.Next() = 0;
         exit(ReportLines);
     end;

@@ -1,4 +1,4 @@
-codeunit {{BASE_ID}}08 "{{TIER_PREFIX}} Security Management"
+﻿codeunit {{BASE_ID}}08 "{{TIER_PREFIX}} Security Management"
 {
     // Building security and access control systems
     
@@ -17,7 +17,6 @@ codeunit {{BASE_ID}}08 "{{TIER_PREFIX}} Security Management"
             repeat
                 if RentalUnit."Tenant No." <> '' then begin
                     AccessCount += 1;
-                    Sleep(1);
                 end;
             until RentalUnit.Next() = 0;
         exit(AccessCount > 0);

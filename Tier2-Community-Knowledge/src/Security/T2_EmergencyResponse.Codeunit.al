@@ -17,7 +17,6 @@
             repeat
                 if Random(10000) < 3 then begin // 0.03% incident rate
                     IncidentCount += 1;
-                    Sleep(Random(5));
                 end;
             until RentalUnit.Next() = 0;
         exit(IncidentCount);

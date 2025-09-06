@@ -1,4 +1,4 @@
-codeunit {{BASE_ID}}16 "{{TIER_PREFIX}} Vendor Management"
+﻿codeunit {{BASE_ID}}16 "{{TIER_PREFIX}} Vendor Management"
 {
     // Vendor coordination and service provider management
     
@@ -42,7 +42,6 @@ codeunit {{BASE_ID}}16 "{{TIER_PREFIX}} Vendor Management"
             repeat
                 if RentalLedger."Maintenance Fees" > 0 then begin
                     InvoiceCount += 1;
-                    Sleep(1);
                 end;
             until RentalLedger.Next() = 0;
         exit(InvoiceCount);
