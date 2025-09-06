@@ -3,7 +3,8 @@
 
 param(
     [string]$ProjectPath = ".",
-    [switch]$Force = $false
+    [switch]$Force = $false,
+    [switch]$Refresh = $false
 )
 
 Write-Host "Starting Five-Tier Extension Generation..." -ForegroundColor Green
@@ -102,41 +103,58 @@ function Generate-Tier {
     
     # Create tier directory
     $tierPath = Join-Path $ProjectPath $Tier.FolderName
-    if (Test-Path $tierPath) {
-        if ($Force) {
-            Write-Host "    Removing existing tier folder..." -ForegroundColor Red
-            Remove-Item $tierPath -Recurse -Force
-        } else {
-            Write-Host "    WARNING: Tier folder already exists. Use -Force to overwrite." -ForegroundColor Yellow
+    
+    if ($Refresh) {
+        # Refresh mode: Only regenerate src folder if tier exists
+        if (-not (Test-Path $tierPath)) {
+            Write-Host "    WARNING: Tier folder does not exist for refresh. Skipping $($Tier.TierName)." -ForegroundColor Yellow
             return
+        }
+        Write-Host "    Refreshing src folder only..." -ForegroundColor Cyan
+    } else {
+        # Normal mode: Create or overwrite entire tier
+        if (Test-Path $tierPath) {
+            if ($Force) {
+                Write-Host "    Removing existing tier folder..." -ForegroundColor Red
+                Remove-Item $tierPath -Recurse -Force
+            } else {
+                Write-Host "    WARNING: Tier folder already exists. Use -Force to overwrite." -ForegroundColor Yellow
+                return
+            }
+        }
+        
+        New-Item -Path $tierPath -ItemType Directory -Force | Out-Null
+    }
+    
+    if (-not $Refresh) {
+        # Create .copilot folder
+        $copilotPath = Join-Path $tierPath ".copilot"
+        New-Item -Path $copilotPath -ItemType Directory -Force | Out-Null
+        
+        # Copy existing .copilot content if it exists
+        $existingCopilotPath = Join-Path $ProjectPath "$($Tier.FolderName)\.copilot"
+        if (Test-Path $existingCopilotPath) {
+            Copy-Item "$existingCopilotPath\*" $copilotPath -Recurse -Force
+            Write-Host "    Preserved existing .copilot knowledge context" -ForegroundColor Green
+        }
+        
+        # Generate app.json
+        $templateAppPath = Join-Path $ProjectPath "Templates\Template_app.json"
+        if (Test-Path $templateAppPath) {
+            $appContent = Get-Content $templateAppPath -Raw
+            $appContent = Replace-Tokens -Content $appContent -Tier $Tier
+            $appOutputPath = Join-Path $tierPath "app.json"
+            Set-Content -Path $appOutputPath -Value $appContent -Encoding UTF8
+            Write-Host "    Generated app.json" -ForegroundColor Green
         }
     }
     
-    New-Item -Path $tierPath -ItemType Directory -Force | Out-Null
-    
-    # Create .copilot folder
-    $copilotPath = Join-Path $tierPath ".copilot"
-    New-Item -Path $copilotPath -ItemType Directory -Force | Out-Null
-    
-    # Copy existing .copilot content if it exists
-    $existingCopilotPath = Join-Path $ProjectPath "$($Tier.FolderName)\.copilot"
-    if (Test-Path $existingCopilotPath) {
-        Copy-Item "$existingCopilotPath\*" $copilotPath -Recurse -Force
-        Write-Host "    Preserved existing .copilot knowledge context" -ForegroundColor Green
-    }
-    
-    # Generate app.json
-    $templateAppPath = Join-Path $ProjectPath "Templates\Template_app.json"
-    if (Test-Path $templateAppPath) {
-        $appContent = Get-Content $templateAppPath -Raw
-        $appContent = Replace-Tokens -Content $appContent -Tier $Tier
-        $appOutputPath = Join-Path $tierPath "app.json"
-        Set-Content -Path $appOutputPath -Value $appContent -Encoding UTF8
-        Write-Host "    Generated app.json" -ForegroundColor Green
-    }
-    
-    # Create src folder structure
+    # Create/refresh src folder structure
     $srcPath = Join-Path $tierPath "src"
+    if ($Refresh -and (Test-Path $srcPath)) {
+        Write-Host "    Removing existing src folder for refresh..." -ForegroundColor Red
+        Remove-Item $srcPath -Recurse -Force
+    }
     New-Item -Path $srcPath -ItemType Directory -Force | Out-Null
     
     # Define module mappings
@@ -198,8 +216,14 @@ function Generate-Tier {
 Write-Host "Configuration:" -ForegroundColor Cyan
 Write-Host "  Project Path: $ProjectPath"
 Write-Host "  Force Overwrite: $Force"
+Write-Host "  Refresh Mode: $Refresh"
 Write-Host "  Tiers to Generate: $($tiers.Count)"
 Write-Host ""
+
+if ($Refresh) {
+    Write-Host "REFRESH MODE: Only regenerating src folders, preserving .copilot, app.json, and other files" -ForegroundColor Cyan
+    Write-Host ""
+}
 
 # Validate templates exist
 $templatesPath = Join-Path $ProjectPath "Templates"
