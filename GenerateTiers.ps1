@@ -16,10 +16,10 @@ $tiers = @(
         TierPrefix = "T0"
         TierDescription = "Performance baseline measurement of unoptimized inefficient code"
         TierLongDescription = "This extension measures actual performance of inefficient AL code patterns without optimization. Provides baseline measurements for comparing against Copilot-optimized versions."
-        TierGuid = "10000000-0000-0000-0000-000000000000"
+        TierGuid = "a9f23447-a900-4e56-b533-62ba8d45dfab"
         IDRangeStart = 50100
         IDRangeEnd = 50199
-        BaseID = 5010
+        BaseID = 501
         FolderName = "Tier0-Performance-Baseline"
     },
     @{
@@ -28,10 +28,10 @@ $tiers = @(
         TierPrefix = "T1"
         TierDescription = "Testing with generic programming optimization knowledge"
         TierLongDescription = "This extension tests GitHub Copilot optimization suggestions using only generic programming knowledge without Business Central specific patterns."
-        TierGuid = "10000001-0001-0001-0001-000000000001"
+        TierGuid = "dde25141-b261-4a19-95be-65057776845c"
         IDRangeStart = 50200
         IDRangeEnd = 50299
-        BaseID = 5020
+        BaseID = 502
         FolderName = "Tier1-Baseline-NoKnowledge"
     },
     @{
@@ -40,10 +40,10 @@ $tiers = @(
         TierPrefix = "T2"
         TierDescription = "Testing with general BC community knowledge"
         TierLongDescription = "This extension tests GitHub Copilot optimization suggestions using general Business Central documentation, community forums, and basic AL language knowledge."
-        TierGuid = "10000002-0002-0002-0002-000000000002"
+        TierGuid = "02e56857-b352-4558-8a47-eafc94527b8f"
         IDRangeStart = 50300
         IDRangeEnd = 50399
-        BaseID = 5030
+        BaseID = 503
         FolderName = "Tier2-Community-Knowledge"
     },
     @{
@@ -52,10 +52,10 @@ $tiers = @(
         TierPrefix = "T3"
         TierDescription = "Testing with focused atomic BC performance topics"
         TierLongDescription = "This extension tests GitHub Copilot optimization suggestions using focused atomic Business Central performance topics (45-60 topics) for specific SIFT, FlowField, and SetLoadFields recommendations."
-        TierGuid = "10000003-0003-0003-0003-000000000003"
+        TierGuid = "3b133a05-3458-4014-a5cb-fc78ed426a98"
         IDRangeStart = 50400
         IDRangeEnd = 50499
-        BaseID = 5040
+        BaseID = 504
         FolderName = "Tier3-Atomic-Knowledge"
     },
     @{
@@ -64,10 +64,10 @@ $tiers = @(
         TierPrefix = "T4"
         TierDescription = "Testing with MCP-enhanced intelligent BC knowledge"
         TierLongDescription = "This extension tests GitHub Copilot optimization suggestions enhanced with Model Context Protocol providing intelligent BC knowledge access, real-time analysis, and progressive optimization guidance."
-        TierGuid = "10000004-0004-0004-0004-000000000004"
+        TierGuid = "614b4456-60ea-4251-8741-60d93ec0808a"
         IDRangeStart = 50500
         IDRangeEnd = 50599
-        BaseID = 5050
+        BaseID = 505
         FolderName = "Tier4-MCP-Enhanced"
     }
 )
