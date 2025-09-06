@@ -7,5 +7,10 @@
 			"path": "Common-Data-Infrastructure"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"CRS.OnSaveAlFileAction": "DoNothing",
+		"alOutline.codeActionsOnSave": [
+
+		]
+	}
 }
