@@ -157,19 +157,103 @@ Job Suite: "Tier 4 - MCP Enhanced"
 - Job 9: Codeunit 50520 "T4 Business Intelligence" (OnRun executes all BI procedures)
 ```
 
-### **Performance Toolkit Settings**
+### **BCPT Suite Configuration**
 
-#### **Recommended Configuration**
-- **Warmup Runs**: 2 iterations (allow JIT compilation and cache warming)
-- **Measurement Runs**: 5 iterations per job (statistical significance)
-- **Concurrent Sessions**: 1 session (avoid contention for baseline measurements)
-- **Wait Between Jobs**: 30 seconds (allow system recovery)
+#### **BCPT Header Fields**
+```
+Code: "TIER0-BASELINE"
+Description: "Tier 0 - Performance Baseline Testing"
+Tag: "COPILOT-BASELINE"
+Duration (minutes): 30
+1 Work Day Corresponds to: 480
+```
 
-#### **Advanced Settings**
-- **Collect SQL Stats**: Yes (essential for measuring database efficiency)
-- **Collect Memory Stats**: Yes (measure memory usage improvements)
-- **Collect AL Profiling**: Yes (identify specific bottlenecks)
-- **Collect Server Stats**: Yes (overall system impact)
+#### **BCPT Line Fields**
+For each codeunit test, configure these fields:
+```
+Test Codeunit ID: 50101
+Description: "T0 Rental Analytics"
+Parameters: [leave blank]
+No. of Sessions: 1
+Min User Delay (ms): 5000
+Max User Delay (ms): 10000
+```
+
+#### **User Testing Procedures**
+**Pre-Test Setup:**
+1. **System Warm-up**: Run each suite once as a "practice run" to allow JIT compilation
+2. **Data Consistency**: Ensure identical test data across all tiers (run data generator once)
+3. **System Isolation**: Close other BC sessions, disable background jobs during testing
+
+**Test Execution Process:**
+1. **Run Baseline**: Execute Tier 0 suite completely (30 minutes)
+2. **Wait Between Tiers**: Allow 5-10 minutes system recovery between tier tests
+3. **Sequential Testing**: Run Tier 1 → 2 → 3 → 4 in sequence
+4. **Multiple Rounds**: Consider running each tier 2-3 times for consistency validation
+
+#### **Optional BCPT Header Fields**
+```
+Version: [system generated]
+Current Run Type: Background
+Start Time: [set when starting]
+Started by: [current user]
+```
+
+#### **BCPT Suite Execution Settings**
+**Available Run Options:**
+- **Foreground**: Shows real-time progress UI (slower, more resource intensive)
+- **Background**: Runs without UI interference (recommended for accurate measurements)
+
+**Built-in Telemetry Capture:**
+- BCPT automatically captures SQL statements, execution duration, and system metrics
+- No additional configuration needed - all performance data logged automatically
+- Results available in BCPT Log Entries page after completion
+
+#### **Complete BCPT Suite Setup Example**
+
+**Step 1: Create Suite Header**
+1. Navigate to **BCPT Suites** page
+2. Create new suite with:
+   - Code: `TIER0-BASELINE`
+   - Description: `Tier 0 - Performance Baseline Testing`  
+   - Duration: `30` minutes
+
+**Step 2: Add Suite Lines**
+Create a line for each primary optimization target:
+```
+Line 1: Codeunit 50101, Description: "Rental Analytics", Delay: 5000-10000ms
+Line 2: Codeunit 50118, Description: "Data Aggregation", Delay: 5000-10000ms
+Line 3: Codeunit 50102, Description: "Lease Management", Delay: 5000-10000ms
+Line 4: Codeunit 50108, Description: "Property Operations", Delay: 5000-10000ms
+...continue for all 9 jobs
+   - No. of Sessions: `1`
+```
+
+**Step 3: Execute Suite**
+1. Start suite from **BCPT Suites** page
+2. Monitor progress in **BCPT Log Entries**
+3. Review results in **Performance Toolkit** telemetry
+
+#### **Important BCPT Behavior Notes**
+
+**What BCPT Actually Tests:**
+- BCPT runs codeunits **repeatedly for the full duration** (30 minutes)
+- Each codeunit executes multiple times with delays between executions  
+- Measures **throughput** (how many times codeunit completes in 30 minutes)
+- Captures **average execution time** per run across many iterations
+
+**Key Metrics BCPT Provides:**
+- **Total Operations**: Number of successful codeunit executions in 30 minutes
+- **Operations per Minute**: Throughput rate
+- **Average Duration**: Mean execution time per codeunit run
+- **SQL Statements**: Database queries per execution
+- **Failures**: Any codeunit execution errors
+
+**Scientific Comparison Approach:**
+1. **Baseline (Tier 0)**: Establish throughput for inefficient code
+2. **Optimized Tiers**: Compare operations per minute improvement
+3. **Improvement Ratio**: Tier X operations ÷ Tier 0 operations
+4. **Consistency**: Monitor standard deviation across runs
 
 ---
 
