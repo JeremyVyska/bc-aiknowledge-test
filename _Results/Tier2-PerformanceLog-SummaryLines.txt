@@ -1,10 +1,10 @@
 Codeunit ID	Codeunit Name	Parameters	No. of Sessions	Run in Foreground	Description	Status	Min. User Delay (ms)	Max. User Delay (ms)	Delay between iterations (sec.)	Delay Type	No. of Iterations	Total Duration (ms)	Average Duration (ms)	No. of SQL Statements	Avg. No. of SQL Statements	No. of Iterations Base	Total Duration Base (ms)	Average Duration Base (ms)	No. of SQL Statements Base	Avg. No. of SQL Statements Base	Change in No. of SQL Statements (%)	Change in Duration (%)
-50301	T2 Rental Analytics		1	No		Completed	100	1000	5	Fixed	3	600651	200217	5019	1673	0	0	0	0	0	0.00	0.00
-50318	T2 Data Aggregation		1	No		Completed	100	1000	5	Fixed	16	517295	32330	24	1	0	0	0	0	0	0.00	0.00
-50302	T2 Lease Management		1	No		Completed	100	1000	5	Fixed	92	91462	994	281	3	0	0	0	0	0	0.00	0.00
-50308	T2 Security Management		1	No		Completed	100	1000	5	Fixed	9	568849	63205	18	2	0	0	0	0	0	0.00	0.00
-50312	T2 Payment Processing		1	No		Completed	100	1000	5	Fixed	15	536859	35790	46	3	0	0	0	0	0	0.00	0.00
-50307	T2 Maintenance Scheduling		1	No		Completed	100	1000	5	Fixed	96	72531	755	192	2	0	0	0	0	0	0.00	0.00
-50319	T2 Report Generation		1	No		Completed	100	1000	5	Fixed	2	700900	350450	307	153	0	0	0	0	0	0.00	0.00
-50303	T2 Property Operations		1	No		Completed	100	1000	5	Fixed	31	439015	14161	64	2	0	0	0	0	0	0.00	0.00
-50320	T2 Business Intelligence		1	No		Completed	100	1000	5	Fixed	15	538186	35879	47	3	0	0	0	0	0	0.00	0.00
+50301	T2 Rental Analytics		1	No		Completed	100	1000	5	Fixed	9	600236	66692	5047	560	0	0	0	0	0	0,00	0,00
+50318	T2 Data Aggregation		1	No		Completed	100	1000	5	Fixed	29	477752	16474	35	1	0	0	0	0	0	0,00	0,00
+50302	T2 Lease Management		1	No		Completed	100	1000	5	Fixed	120	4775	39	361	3	0	0	0	0	0	0,00	0,00
+50308	T2 Security Management		1	No		Completed	100	1000	5	Fixed	15	557985	37199	30	2	0	0	0	0	0	0,00	0,00
+50312	T2 Payment Processing		1	No		Completed	100	1000	5	Fixed	23	504705	21943	69	3	0	0	0	0	0	0,00	0,00
+50307	T2 Maintenance Scheduling		1	No		Completed	100	1000	5	Fixed	93	141051	1516	186	2	0	0	0	0	0	0,00	0,00
+50319	T2 Report Generation		1	No		Completed	100	1000	5	Fixed	2	628519	314259	309	154	0	0	0	0	0	0,00	0,00
+50303	T2 Property Operations		1	No		Completed	100	1000	5	Fixed	94	135123	1437	190	2	0	0	0	0	0	0,00	0,00
+50320	T2 Business Intelligence		1	No		Completed	100	1000	5	Fixed	23	495101	21526	71	3	0	0	0	0	0	0,00	0,00
