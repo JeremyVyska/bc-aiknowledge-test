@@ -41,5 +41,5 @@
   ],
   "features": [],
   "runtime": "14.0",
-  "target": "OnPrem"
+  "target": "Cloud"
 }

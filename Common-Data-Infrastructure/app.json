@@ -2,7 +2,7 @@
   "id": "50b6d810-6a27-4b81-9324-13c26754122c",
   "name": "Common Data Infrastructure",
   "publisher": "KnowledgeTester",
-  "version": "1.0.0.0",
+  "version": "1.0.0.4",
   "brief": "Shared data infrastructure for Five-Tier Copilot Testing Protocol",
   "description": "This extension provides the shared data tables, test data generator, and infrastructure objects used by all tier testing extensions. Contains the single source of truth for rental management test data including 5,000 units and 3,000,000+ ledger entries.",
   "privacyStatement": "",
@@ -35,5 +35,5 @@
   ],
   "features": [],
   "runtime": "14.0",
-  "target": "OnPrem"
+  "target": "Cloud"
 }
