@@ -1,10 +1,10 @@
 Codeunit ID	Codeunit Name	Parameters	No. of Sessions	Run in Foreground	Description	Status	Min. User Delay (ms)	Max. User Delay (ms)	Delay between iterations (sec.)	Delay Type	No. of Iterations	Total Duration (ms)	Average Duration (ms)	No. of SQL Statements	Avg. No. of SQL Statements	No. of Iterations Base	Total Duration Base (ms)	Average Duration Base (ms)	No. of SQL Statements Base	Avg. No. of SQL Statements Base	Change in No. of SQL Statements (%)	Change in Duration (%)
-50501	T4 Rental Analytics		1	No		Completed	100	1000	5	Fixed	11	591747	53795	1200	109	0	0	0	0	0	0,00	0,00
-50518	T4 Data Aggregation		1	No		Completed	100	1000	5	Fixed	32	455976	14249	205	6	0	0	0	0	0	0,00	0,00
-50502	T4 Lease Management		1	No		Completed	100	1000	5	Fixed	118	16425	139	266	2	0	0	0	0	0	0,00	0,00
-50508	T4 Security Management		1	No		Completed	100	1000	5	Fixed	15	553649	36909	30	2	0	0	0	0	0	0,00	0,00
-50512	T4 Payment Processing		1	No		Completed	100	1000	5	Fixed	121	1386	11	207	1	0	0	0	0	0	0,00	0,00
-50507	T4 Maintenance Scheduling		1	No		Completed	100	1000	5	Fixed	121	699	5	62	0	0	0	0	0	0	0,00	0,00
-50519	T4 Report Generation		1	No		Completed	100	1000	5	Fixed	3	797765	265921	462	154	0	0	0	0	0	0,00	0,00
-50503	T4 Property Operations		1	No		Completed	100	1000	5	Fixed	50	354457	7089	152	3	0	0	0	0	0	0,00	0,00
-50520	T4 Business Intelligence		1	No		Completed	100	1000	5	Fixed	13	568545	43734	65028	5002	0	0	0	0	0	0,00	0,00
+50501	T4 Rental Analytics		1	No		Completed	100	1000	5	Fixed	9	584586	64954	15085	1676	0	0	0	0	0	0,00	0,00
+50518	T4 Data Aggregation		1	No		Completed	100	1000	5	Fixed	13	543881	41837	22	1	0	0	0	0	0	0,00	0,00
+50502	T4 Lease Management		1	No		Completed	100	1000	5	Fixed	121	128	1	4	0	0	0	0	0	0	0,00	0,00
+50508	T4 Security Management		1	No		Completed	100	1000	5	Fixed	121	133	1	4	0	0	0	0	0	0	0,00	0,00
+50512	T4 Payment Processing		1	No		Completed	100	1000	5	Fixed	121	3924	32	5	0	0	0	0	0	0	0,00	0,00
+50507	T4 Maintenance Scheduling		1	No		Completed	100	1000	5	Fixed	121	1403	11	4	0	0	0	0	0	0	0,00	0,00
+50519	T4 Report Generation		1	No		Completed	100	1000	5	Fixed	109	60579	555	111	1	0	0	0	0	0	0,00	0,00
+50503	T4 Property Operations		1	No		Completed	100	1000	5	Fixed	120	4466	37	7	0	0	0	0	0	0	0,00	0,00
+50520	T4 Business Intelligence		1	No		Completed	100	1000	5	Fixed	119	10235	86	172	1	0	0	0	0	0	0,00	0,00
